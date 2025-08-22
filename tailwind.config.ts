@@ -26,7 +26,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -61,7 +62,24 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// AI Nexus specific colors
+				neural: {
+					pink: 'hsl(var(--neural-pink))',
+					blue: 'hsl(var(--data-blue))',
+					amber: 'hsl(var(--code-amber))',
+					purple: 'hsl(var(--energy-purple))'
 				}
+			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-neural': 'var(--gradient-neural)',
+				'gradient-glass': 'var(--gradient-glass)',
+				'gradient-glow': 'var(--gradient-glow)'
+			},
+			boxShadow: {
+				'neural-glow': 'var(--pulse-glow)',
+				'glass': '0 4px 32px hsla(180, 100%, 50%, 0.15), inset 0 1px 0 hsla(0, 0%, 100%, 0.1)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +102,77 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				// AI Nexus animations
+				'liquid-flow': {
+					'0%, 100%': { 
+						'background-position': '0% 50%' 
+					},
+					'50%': { 
+						'background-position': '100% 50%' 
+					}
+				},
+				'pulse-glow': {
+					'0%, 100%': { 
+						'box-shadow': '0 0 20px hsl(180 100% 50% / 0.5)' 
+					},
+					'50%': { 
+						'box-shadow': '0 0 40px hsl(180 100% 50% / 0.8), 0 0 60px hsl(180 100% 50% / 0.4)' 
+					}
+				},
+				'border-flow': {
+					'0%': { 
+						'background-position': '0% 50%' 
+					},
+					'100%': { 
+						'background-position': '200% 50%' 
+					}
+				},
+				'neural-pulse': {
+					'0%, 100%': { 
+						transform: 'scale(1)', 
+						opacity: '0.8' 
+					},
+					'50%': { 
+						transform: 'scale(1.05)', 
+						opacity: '1' 
+					}
+				},
+				'data-stream': {
+					'0%': { 
+						transform: 'translateX(-100%)' 
+					},
+					'100%': { 
+						transform: 'translateX(100vw)' 
+					}
+				},
+				'float': {
+					'0%, 100%': { 
+						transform: 'translateY(0px)' 
+					},
+					'50%': { 
+						transform: 'translateY(-20px)' 
+					}
+				},
+				'rotate-slow': {
+					from: { 
+						transform: 'rotate(0deg)' 
+					},
+					to: { 
+						transform: 'rotate(360deg)' 
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'liquid-flow': 'liquid-flow 3s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite alternate',
+				'border-flow': 'border-flow 3s linear infinite',
+				'neural-pulse': 'neural-pulse 2s ease-in-out infinite',
+				'data-stream': 'data-stream 8s linear infinite',
+				'float': 'float 6s ease-in-out infinite',
+				'rotate-slow': 'rotate-slow 20s linear infinite'
 			}
 		}
 	},
