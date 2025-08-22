@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { Suspense, useEffect, useRef } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import { Stars, OrbitControls } from '@react-three/drei'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -9,6 +9,7 @@ import SkillsSection from './sections/SkillsSection'
 import IntroSection from './sections/IntroSection'
 import AboutSection from './sections/AboutSection'
 import LoadingScreen from './ui/LoadingScreen'
+import WebGLErrorBoundary, { isWebGLSupported } from './ui/WebGLErrorBoundary'
 import { motion } from 'framer-motion'
 
 // Register GSAP plugins
@@ -19,8 +20,12 @@ if (typeof window !== 'undefined') {
 const AIPortfolio = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [webglSupported, setWebglSupported] = useState(true)
 
   useEffect(() => {
+    // Check WebGL support on mount
+    setWebglSupported(isWebGLSupported())
+    
     if (!scrollRef.current) return
 
     // Initialize scroll-driven animations
@@ -65,45 +70,65 @@ const AIPortfolio = () => {
       
       {/* Fixed 3D Canvas Background */}
       <div className="fixed inset-0 -z-10">
-        <Canvas
-          ref={canvasRef}
-          camera={{ 
-            position: [0, 0, 10], 
-            fov: 75,
-            near: 0.1,
-            far: 1000
-          }}
-          dpr={[1, 2]}
-          performance={{ min: 0.5 }}
+        <WebGLErrorBoundary 
+          fallback={
+            <div className="fixed inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
+              <div className="absolute inset-0 opacity-20" style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+              }} />
+            </div>
+          }
         >
-          <Suspense fallback={null}>
-            <ambientLight intensity={0.2} />
-            <pointLight position={[10, 10, 10]} intensity={0.8} color="#00ffff" />
-            <pointLight position={[-10, -10, -10]} intensity={0.5} color="#ff00ff" />
-            
-            <Stars 
-              radius={300} 
-              depth={60} 
-              count={1000} 
-              factor={4} 
-              saturation={0.5}
-              fade={true}
-            />
-            
-            <LiquidSphere />
-            
-            {/* Orbit controls for desktop interaction */}
-            <OrbitControls 
-              enableZoom={true}
-              enablePan={false}
-              enableRotate={true}
-              autoRotate={true}
-              autoRotateSpeed={0.5}
-              maxPolarAngle={Math.PI / 2}
-              minPolarAngle={Math.PI / 2}
-            />
-          </Suspense>
-        </Canvas>
+          {webglSupported && (
+            <Canvas
+              ref={canvasRef}
+              camera={{ 
+                position: [0, 0, 10], 
+                fov: 75,
+                near: 0.1,
+                far: 1000
+              }}
+              dpr={[1, 2]}
+              performance={{ min: 0.5 }}
+              onCreated={(state) => {
+                // Additional WebGL context validation
+                const gl = state.gl.getContext()
+                if (!gl) {
+                  throw new Error('WebGL context not available')
+                }
+              }}
+            >
+              <Suspense fallback={null}>
+                <ambientLight intensity={0.2} />
+                <pointLight position={[10, 10, 10]} intensity={0.8} color="#00ffff" />
+                <pointLight position={[-10, -10, -10]} intensity={0.5} color="#ff00ff" />
+                
+                <Stars 
+                  radius={300} 
+                  depth={60} 
+                  count={1000} 
+                  factor={4} 
+                  saturation={0.5}
+                  fade={true}
+                />
+                
+                <LiquidSphere />
+                
+                {/* Orbit controls for desktop interaction */}
+                <OrbitControls 
+                  enableZoom={true}
+                  enablePan={false}
+                  enableRotate={true}
+                  autoRotate={true}
+                  autoRotateSpeed={0.5}
+                  maxPolarAngle={Math.PI / 2}
+                  minPolarAngle={Math.PI / 2}
+                />
+              </Suspense>
+            </Canvas>
+          )}
+        </WebGLErrorBoundary>
       </div>
 
       {/* Scrollable Content */}
