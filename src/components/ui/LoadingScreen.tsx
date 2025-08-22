@@ -28,7 +28,7 @@ const LoadingScreen = () => {
           className="fixed inset-0 z-50 bg-background flex items-center justify-center"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: 'power2.out' }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <div className="text-center max-w-md mx-auto px-6">
             {/* Neural Network Animation */}
@@ -131,7 +131,7 @@ const LoadingScreen = () => {
                   className="h-full bg-gradient-to-r from-primary to-secondary rounded-full"
                   initial={{ width: 0 }}
                   animate={{ width: `${loadingProgress}%` }}
-                  transition={{ duration: 0.3, ease: 'power2.out' }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
                 />
               </div>
             </div>
