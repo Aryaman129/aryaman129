@@ -39,13 +39,6 @@ const IntroSection = () => {
         Aryaman Mohta
       </motion.h1>
       
-      <motion.p
-        ref={subtitleRef}
-        className="text-2xl md:text-3xl text-primary-glow mb-8 font-light"
-        initial={{ opacity: 0 }}
-      >
-        AI Nexus Architect
-      </motion.p>
 
       <motion.div
         ref={descriptionRef}

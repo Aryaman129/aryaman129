@@ -17,12 +17,17 @@ interface ProjectCardProps {
 const ProjectCard = ({ project }: ProjectCardProps) => {
   const [isFlipped, setIsFlipped] = useState(false)
 
+  const handleFlip = () => setIsFlipped(!isFlipped)
+
   return (
     <motion.div
-      className="relative w-full h-96 perspective-1000"
+      className="relative w-full h-96 perspective-1000 cursor-pointer"
       onHoverStart={() => setIsFlipped(true)}
       onHoverEnd={() => setIsFlipped(false)}
+      onClick={handleFlip}
+      onTouchStart={handleFlip}
       whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
     >
       <motion.div
         className="relative w-full h-full transition-transform duration-700 transform-gpu preserve-3d"
@@ -70,13 +75,14 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             )}
           </div>
 
-          {/* Hover indicator */}
+          {/* Interaction indicator */}
           <motion.div
             className="absolute bottom-4 right-4 text-xs text-muted-foreground"
             animate={{ opacity: [0.3, 0.7, 0.3] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            Hover for details →
+            <span className="hidden md:block">Hover for details →</span>
+            <span className="md:hidden">Tap for details →</span>
           </motion.div>
         </motion.div>
 

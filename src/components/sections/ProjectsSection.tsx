@@ -4,81 +4,111 @@ import ProjectCard from '../ui/ProjectCard'
 const projectsData = [
   {
     title: 'Academia2 — SRM Student Companion',
-    status: 'Production Ready',
-    description: 'Full-stack student portal with scraping, real-time updates, and offline PWA support. Unified dashboard for attendance, marks, timetable predictions.',
-    techStack: ['React 18', 'Flask', 'Supabase', 'Docker', 'Selenium', 'JWT'],
+    status: 'Completed, deployed (prod-like)',
+    description: 'A full-stack student portal for SRM University students, combining scraping, real-time updates, and offline PWA support. Unified dashboard for attendance, marks, timetable, predictions, and reminders.',
+    techStack: ['React 18 (PWA)', 'Flask (Python)', 'Supabase (Postgres)', 'Selenium', 'JWT authentication', 'Docker', 'Socket.IO'],
     features: [
       'Secure login and encrypted storage',
       'Real-time attendance prediction',
-      'Offline PWA support',
-      'Split microservices architecture'
+      'Offline support (PWA)',
+      'Split microservices for reliability',
+      'Row Level Security implementation'
     ],
     gradient: 'from-primary to-secondary'
   },
   {
     title: 'Zomatify — Food Ordering Platform',
-    status: 'Demo Ready',
-    description: 'Full-stack food ordering platform inspired by Zomato, with special focus on local restaurants. Includes user ordering and owner dashboards.',
-    techStack: ['React', 'TypeScript', 'Zustand', 'Supabase', 'Razorpay'],
+    status: 'Complete (demo Razorpay integration)',
+    description: 'A full-stack food ordering and delivery app, inspired by Zomato, with special focus on local restaurants. Includes user ordering and owner dashboards.',
+    techStack: ['React.js', 'TypeScript', 'Zustand', 'Styled Components', 'Supabase (Postgres + Auth + Storage)', 'Razorpay', 'Framer Motion'],
     features: [
-      'Real-time menu browsing and cart',
-      'Scheduled/group ordering system',
-      'Owner dashboard with analytics',
-      'Payment integration with revenue split'
+      'Real-time menu browsing, cart, orders',
+      'Scheduled/group ordering',
+      'Owner dashboard with analytics, menu management',
+      'Queue/interval batching for kitchens',
+      'Payment integration (10% → my account, 90% → vendor)'
     ],
     gradient: 'from-neural-amber to-neural-pink'
   },
   {
-    title: 'Ai.NEXUS — AI Orchestration Framework',
-    status: 'R&D Prototype',
-    description: 'Experimental AI framework for orchestrating multi-specialist AI agents (vision, research, automation). Cross-application UI automation with adaptability.',
-    techStack: ['YOLO', 'OpenCV', 'LangChain', 'Ollama', 'PyTorch'],
+    title: 'Ai.NEXUS — Adaptive AI Orchestration Framework (PoC)',
+    status: 'Proof-of-concept, ongoing R&D',
+    description: 'An experimental AI framework for orchestrating multi-specialist AI agents (vision, research, automation). Designed for cross-application UI and web automation with adaptability.',
+    techStack: ['YOLO (UI detection)', 'OpenCV', 'EasyOCR', 'PyTesseract', 'Ollama', 'Groq', 'HuggingFace Transformers', 'LangChain', 'Mistral', 'Gemini'],
     features: [
-      'Multi-specialist AI coordination',
-      'Vision-based UI detection',
-      'Cross-device automation',
-      'Adaptive agent selection'
+      'Multi-specialist AI: VisionAI, ResearchAI, AutomationAI, CoordinatorAI',
+      'Shared memory + adaptive selection',
+      'Extensible for new AI specialists',
+      'Cross-device/system UI automation',
+      'Modular architecture with logging, error handling, security'
     ],
     gradient: 'from-secondary to-accent'
   },
   {
-    title: 'GDG — Conference Management',
-    status: 'Complete',
-    description: 'Conference system for managing speakers, attendees, sessions, and check-ins with QR code integration and multi-role authentication.',
-    techStack: ['Next.js', 'Express', 'Prisma', 'SQLite', 'Docker'],
+    title: 'GDG — Conference Management System',
+    status: 'Complete (Render demo deploy)',
+    description: 'A conference system for managing speakers, attendees, sessions, and check-ins.',
+    techStack: ['Next.js (React/TypeScript)', 'Express.js (TypeScript)', 'Prisma ORM', 'SQLite (dev)', 'JWT + OTP flows', 'qrcode library', 'Docker + Compose'],
     features: [
-      'Multi-role authentication system',
+      'Multi-role authentication (admin, speaker, attendee)',
       'QR-based check-in validation',
-      'Speaker availability tracking',
-      'Admin dashboard with overrides'
+      'Speaker availability & income tracking',
+      'Admin dashboard with manual overrides and stats'
     ],
     gradient: 'from-neural-blue to-primary'
   },
   {
-    title: 'Company Website — Shyam Trading',
-    status: 'Production',
-    description: 'Modern corporate website for a 40+ year construction company with editable CMS features and real-time content management.',
-    techStack: ['React', 'TypeScript', 'Supabase', 'GSAP', 'Framer Motion'],
+    title: 'Company Website — Shyam Trading Company',
+    status: 'Complete, production-ready',
+    description: 'A modern corporate website for a 40+ year old construction company with editable CMS features.',
+    techStack: ['React + TypeScript', 'Framer Motion', 'GSAP animations', 'Supabase (Postgres + Storage + RLS)', 'Vercel (production)'],
     features: [
-      'CMS-like admin portal',
-      'Real-time content editing',
-      'Professional corporate branding',
-      'Advanced animations'
+      'CMS-like admin portal with real-time editing',
+      'LocalStorage fallback + error handling',
+      'Migration/setup tools + admin authentication',
+      'Professional corporate branding with animations'
     ],
     gradient: 'from-accent to-neural-purple'
   },
   {
-    title: 'Captcha Solver Bot',
-    status: 'PoC Complete',
-    description: 'Cross-device automation loop that solves captchas automatically using computer vision and AI models with ADB integration.',
-    techStack: ['OpenCV', 'EasyOCR', 'BakLlava', 'ADB', 'PyTesseract'],
+    title: 'Captcha Solver Bot — Android ↔ Laptop Automation',
+    status: 'Complete (PoC)',
+    description: 'A cross-device automation loop that solves captchas automatically.',
+    techStack: ['OpenCV', 'EasyOCR', 'PyTesseract', 'BakLlava AI model', 'ADB'],
     features: [
-      'Wireless/USB debugging support',
-      'Computer vision preprocessing',
-      'AI model fallback system',
-      'Automated tap simulation'
+      'ADB screenshot from phone → laptop',
+      'Preprocessing with OpenCV',
+      'OCR with EasyOCR/PyTesseract',
+      'AI model fallback to BakLlava',
+      'Wireless/USB debugging supported'
     ],
     gradient: 'from-neural-purple to-neural-pink'
+  },
+  {
+    title: 'AI HR / Voice Interview Simulator',
+    status: 'Local demo completed',
+    description: 'A local AI HR assistant that filters resumes and conducts voice-based mock interviews.',
+    techStack: ['Whisper (STT)', 'Coqui TTS', 'Local LLMs (Ollama)', 'Streamlit frontend'],
+    features: [
+      'Real-time voice interaction',
+      'Resume filtering + scoring logic',
+      'Human-in-the-loop evaluation',
+      'Fully offline operation'
+    ],
+    gradient: 'from-primary to-neural-blue'
+  },
+  {
+    title: 'Endpoint Extractor — Developer Tool',
+    status: 'Completed',
+    description: 'A tool for developers to capture and filter browser XHR/fetch/WebSocket traffic to extract hidden APIs and data sources.',
+    techStack: ['Python', 'Streamlit (UI)', 'FastAPI (backend)', 'Modular architecture'],
+    features: [
+      'Browser traffic capture',
+      'API endpoint filtering',
+      'Hidden data source extraction',
+      'Developer-friendly interface'
+    ],
+    gradient: 'from-secondary to-neural-amber'
   }
 ]
 
@@ -132,10 +162,10 @@ const ProjectsSection = () => {
         <h3 className="text-3xl font-bold mb-8 text-primary">Other Experiments</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { name: 'AI HR Interview Simulator', tech: 'Whisper + LLMs' },
-            { name: 'Endpoint Extractor Tool', tech: 'Python + FastAPI' },
-            { name: 'Kaggle Model Fine-tuning', tech: 'PyTorch + W&B' },
-            { name: 'Docker Microservices', tech: 'Docker + Compose' }
+            { name: 'Autonomus_Ai — Multi-Agent Prototype', tech: 'PyTorch + LangChain' },
+            { name: 'AI Chatroom', tech: 'Multi-AI collaboration' },
+            { name: 'Kaggle Model Fine-tuning', tech: 'PyTorch + W&B + Lightning Studio' },
+            { name: 'Docker Images', tech: 'Academia2 & GDG deployment' }
           ].map((experiment, index) => (
             <motion.div
               key={experiment.name}
