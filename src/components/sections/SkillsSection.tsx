@@ -111,19 +111,86 @@ const SkillsSection = () => {
             className="glass-card p-6 rounded-xl hover-lift group"
             whileHover={{ y: -8, rotateY: 5 }}
           >
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-lg">{skill.name}</h3>
-              <span className="text-primary font-bold">{skill.level}%</span>
+            <div className="flex items-center justify-center mb-4">
+              <h3 className="font-semibold text-lg text-center">{skill.name}</h3>
             </div>
             
-            {/* Skill Level Bar */}
-            <div className="w-full bg-muted/30 rounded-full h-2 mb-4 overflow-hidden">
+            {/* Skill Network Visualization */}
+            <div className="relative h-16 mb-4 overflow-hidden">
+              {/* Central node */}
               <motion.div
-                className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
-                initial={{ width: 0 }}
-                animate={{ width: `${skill.level}%` }}
-                transition={{ duration: 1, delay: 0.5 + index * 0.1, ease: 'power2.out' }}
+                className="absolute left-1/2 top-1/2 w-3 h-3 rounded-full bg-primary transform -translate-x-1/2 -translate-y-1/2"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  boxShadow: [`0 0 0 0 hsl(var(--primary) / 0.7)`, `0 0 0 10px hsl(var(--primary) / 0)`, `0 0 0 0 hsl(var(--primary) / 0)`]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: 'easeOut'
+                }}
               />
+              
+              {/* Connecting nodes */}
+              {[...Array(4)].map((_, nodeIndex) => {
+                const angle = (nodeIndex * 90) * Math.PI / 180
+                const radius = 25
+                const x = Math.cos(angle) * radius
+                const y = Math.sin(angle) * radius
+                
+                return (
+                  <div key={nodeIndex}>
+                    {/* Connection line */}
+                    <motion.div
+                      className={`absolute w-px bg-gradient-to-r ${skill.color} opacity-60`}
+                      style={{
+                        left: '50%',
+                        top: '50%',
+                        transformOrigin: 'left center',
+                        transform: `rotate(${nodeIndex * 90}deg)`,
+                        height: '1px',
+                        width: `${radius}px`
+                      }}
+                      animate={{
+                        opacity: [0.3, 0.8, 0.3],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: nodeIndex * 0.2,
+                        ease: 'easeInOut'
+                      }}
+                    />
+                    
+                    {/* Node */}
+                    <motion.div
+                      className={`absolute w-2 h-2 rounded-full bg-gradient-to-r ${skill.color}`}
+                      style={{
+                        left: `calc(50% + ${x}px)`,
+                        top: `calc(50% + ${y}px)`,
+                        transform: 'translate(-50%, -50%)'
+                      }}
+                      animate={{
+                        scale: [0.8, 1.2, 0.8],
+                        rotate: 360
+                      }}
+                      transition={{
+                        scale: {
+                          duration: 1.5,
+                          repeat: Infinity,
+                          delay: nodeIndex * 0.1,
+                          ease: 'easeInOut'
+                        },
+                        rotate: {
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: 'linear'
+                        }
+                      }}
+                    />
+                  </div>
+                )
+              })}
             </div>
 
             {/* Animated particles */}
@@ -153,41 +220,6 @@ const SkillsSection = () => {
         ))}
       </motion.div>
 
-      {/* Hardware & Targets */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.5 }}
-        viewport={{ once: true }}
-        className="mt-20 text-center"
-      >
-        <h3 className="text-3xl font-bold mb-8 text-primary">Hardware Targets</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
-          <motion.div
-            className="glass-card p-6 rounded-xl nexus-border"
-            whileHover={{ scale: 1.05, rotateY: 10 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <h4 className="font-bold text-xl mb-4 text-neural-blue">Desktop Development</h4>
-            <p className="text-muted-foreground">
-              Windows | RTX 4050 + Intel i5 HX<br />
-              Optimized for AI training & 3D development
-            </p>
-          </motion.div>
-          
-          <motion.div
-            className="glass-card p-6 rounded-xl nexus-border"
-            whileHover={{ scale: 1.05, rotateY: -10 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <h4 className="font-bold text-xl mb-4 text-neural-pink">Mobile Testing</h4>
-            <p className="text-muted-foreground">
-              Android | OnePlus 11R<br />
-              ADB debugging & cross-device automation
-            </p>
-          </motion.div>
-        </div>
-      </motion.div>
     </div>
   )
 }

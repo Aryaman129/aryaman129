@@ -7,6 +7,7 @@ import LiquidSphere from './3d/LiquidSphere'
 import ProjectsSection from './sections/ProjectsSection'
 import SkillsSection from './sections/SkillsSection'
 import IntroSection from './sections/IntroSection'
+import AboutSection from './sections/AboutSection'
 import LoadingScreen from './ui/LoadingScreen'
 import { motion } from 'framer-motion'
 
@@ -109,7 +110,7 @@ const AIPortfolio = () => {
       <div 
         ref={scrollRef}
         className="relative z-10 w-full"
-        style={{ height: '500vh' }} // Extended height for scroll sections
+        style={{ height: '600vh' }} // Extended height for scroll sections
       >
         {/* Background gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
@@ -117,6 +118,11 @@ const AIPortfolio = () => {
         {/* Intro Section */}
         <section className="min-h-screen flex items-center justify-center relative">
           <IntroSection />
+        </section>
+
+        {/* About Section */}
+        <section className="min-h-screen relative py-20 flex items-center justify-center">
+          <AboutSection />
         </section>
 
         {/* Projects Section */}
@@ -148,11 +154,30 @@ const AIPortfolio = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <p className="text-primary text-lg">
-                Contact: Aryaman Mohta<br />
-                B.Tech Computer Science Engineering<br />
-                SRM University, KTR
-              </p>
+              <div className="space-y-4 text-lg">
+                <div className="flex items-center justify-center gap-3">
+                  <span className="text-2xl">📧</span>
+                  <a 
+                    href="mailto:aryamanmohta@gmail.com" 
+                    className="text-primary hover:text-primary-glow transition-colors"
+                  >
+                    aryamanmohta@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center justify-center gap-3">
+                  <span className="text-2xl">📱</span>
+                  <a 
+                    href="tel:+919309114125" 
+                    className="text-primary hover:text-primary-glow transition-colors"
+                  >
+                    +91 9309114125
+                  </a>
+                </div>
+                <div className="text-center text-muted-foreground mt-4">
+                  B.Tech Computer Science Engineering<br />
+                  SRM University, KTR
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         </section>

@@ -117,7 +117,7 @@ const LoadingScreen = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Initializing AI Nexus
+              Loading Portfolio
             </motion.h2>
 
             {/* Progress bar */}
@@ -148,11 +148,11 @@ const LoadingScreen = () => {
                 ease: 'easeInOut',
               }}
             >
-              {loadingProgress < 25 && 'Connecting neural pathways...'}
-              {loadingProgress >= 25 && loadingProgress < 50 && 'Loading project data...'}
-              {loadingProgress >= 50 && loadingProgress < 75 && 'Initializing 3D environment...'}
-              {loadingProgress >= 75 && loadingProgress < 100 && 'Finalizing experience...'}
-              {loadingProgress >= 100 && 'Welcome to the Nexus!'}
+              {loadingProgress < 25 && 'Loading projects...'}
+              {loadingProgress >= 25 && loadingProgress < 50 && 'Preparing experiences...'}
+              {loadingProgress >= 50 && loadingProgress < 75 && 'Rendering 3D elements...'}
+              {loadingProgress >= 75 && loadingProgress < 100 && 'Almost ready...'}
+              {loadingProgress >= 100 && 'Welcome!'}
             </motion.div>
           </div>
 
