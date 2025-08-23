@@ -179,50 +179,48 @@ const AIPortfolio = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <div className="space-y-4 text-lg">
-                <div className="flex items-center justify-center gap-3">
+              <div className="grid grid-cols-2 gap-4 text-lg">
+                <div className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors">
                   <span className="text-2xl">📧</span>
                   <a 
                     href="mailto:aryamanmohta@gmail.com" 
-                    className="text-primary hover:text-primary-glow transition-colors"
-                    onClick={() => window.open('mailto:aryamanmohta@gmail.com', '_blank')}
+                    className="text-primary hover:text-primary-glow transition-colors text-center"
                   >
-                    aryamanmohta@gmail.com
+                    Gmail
                   </a>
                 </div>
-                <div className="flex items-center justify-center gap-3">
+                <div className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors">
                   <span className="text-2xl">📱</span>
                   <a 
                     href="tel:+919309114125" 
-                    className="text-primary hover:text-primary-glow transition-colors"
-                    onClick={() => window.open('tel:+919309114125', '_self')}
+                    className="text-primary hover:text-primary-glow transition-colors text-center"
                   >
-                    +91 9309114125
+                    Phone
                   </a>
                 </div>
-                <div className="flex items-center justify-center gap-3">
+                <div className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors">
                   <span className="text-2xl">💼</span>
                   <a 
                     href="https://www.linkedin.com/in/aryaman-mohta-53b715308" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary-glow transition-colors"
+                    className="text-primary hover:text-primary-glow transition-colors text-center"
                   >
-                    LinkedIn Profile
+                    LinkedIn
                   </a>
                 </div>
-                <div className="flex items-center justify-center gap-3">
+                <div className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors">
                   <span className="text-2xl">💻</span>
                   <a 
                     href="https://github.com/Aryaman129/" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary-glow transition-colors"
+                    className="text-primary hover:text-primary-glow transition-colors text-center"
                   >
-                    GitHub Profile
+                    GitHub
                   </a>
                 </div>
-                <div className="text-center text-muted-foreground mt-4">
+                <div className="col-span-2 text-center text-muted-foreground mt-4">
                   B.Tech Computer Science Engineering<br />
                   SRM University, KTR
                 </div>

@@ -35,7 +35,9 @@ const IntroSection = () => {
       <motion.h1
         ref={titleRef}
         className="text-7xl md:text-8xl font-bold mb-6 liquid-text"
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 3 }}
       >
         Aryaman Mohta
       </motion.h1>
@@ -44,7 +46,9 @@ const IntroSection = () => {
       <motion.div
         ref={descriptionRef}
         className="glass-card p-8 rounded-2xl nexus-border max-w-2xl mx-auto"
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 3.5 }}
       >
         <p className="text-lg text-muted-foreground leading-relaxed">
           B.Tech Computer Science Engineering student at{' '}
