@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
+import TextRevealEffects from '../ui/TextRevealEffects'
 
 const AboutSection = () => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -9,17 +10,17 @@ const AboutSection = () => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.about-card',
-        { opacity: 0, y: 100, rotateX: 45 },
+        { opacity: 0, y: 50, scale: 0.9 },
         {
           opacity: 1,
           y: 0,
-          rotateX: 0,
-          duration: 1.2,
-          stagger: 0.2,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.1,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: containerRef.current,
-            start: 'top 70%',
+            start: 'top 80%',
           }
         }
       )
@@ -65,7 +66,7 @@ const AboutSection = () => {
         className="text-center mb-16"
       >
         <h2 className="text-5xl md:text-6xl font-bold mb-6 liquid-text">
-          About Me
+          <TextRevealEffects text="About Me" effect="glitch" delay={0.2} />
         </h2>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
           I specialize in building production-grade applications and experimental AI systems. 

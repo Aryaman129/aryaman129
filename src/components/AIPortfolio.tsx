@@ -11,6 +11,7 @@ import AboutSection from './sections/AboutSection'
 import LoadingScreen from './ui/LoadingScreen'
 import WebGLErrorBoundary, { isWebGLSupported } from './ui/WebGLErrorBoundary'
 import { motion } from 'framer-motion'
+import TextRevealEffects from './ui/TextRevealEffects'
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
@@ -169,7 +170,7 @@ const AIPortfolio = () => {
             className="text-center max-w-2xl mx-auto px-6"
           >
             <h2 className="text-5xl font-bold mb-8 liquid-text">
-              Ready to Connect?
+              <TextRevealEffects text="Ready to Connect?" effect="blur" delay={0.5} />
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
               Let's build the future together through AI and full-stack innovation.
@@ -185,6 +186,7 @@ const AIPortfolio = () => {
                   <a 
                     href="mailto:aryamanmohta@gmail.com" 
                     className="text-primary hover:text-primary-glow transition-colors"
+                    onClick={() => window.open('mailto:aryamanmohta@gmail.com', '_blank')}
                   >
                     aryamanmohta@gmail.com
                   </a>
@@ -194,8 +196,31 @@ const AIPortfolio = () => {
                   <a 
                     href="tel:+919309114125" 
                     className="text-primary hover:text-primary-glow transition-colors"
+                    onClick={() => window.open('tel:+919309114125', '_self')}
                   >
                     +91 9309114125
+                  </a>
+                </div>
+                <div className="flex items-center justify-center gap-3">
+                  <span className="text-2xl">💼</span>
+                  <a 
+                    href="https://www.linkedin.com/in/aryaman-mohta-53b715308" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary-glow transition-colors"
+                  >
+                    LinkedIn Profile
+                  </a>
+                </div>
+                <div className="flex items-center justify-center gap-3">
+                  <span className="text-2xl">💻</span>
+                  <a 
+                    href="https://github.com/Aryaman129/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary-glow transition-colors"
+                  >
+                    GitHub Profile
                   </a>
                 </div>
                 <div className="text-center text-muted-foreground mt-4">
