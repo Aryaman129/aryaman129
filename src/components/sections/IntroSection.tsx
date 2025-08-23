@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import TextReveal from '../ui/TextReveal'
 
 const IntroSection = () => {
   const titleRef = useRef<HTMLHeadingElement>(null)
@@ -37,9 +38,9 @@ const IntroSection = () => {
         className="text-7xl md:text-8xl font-bold mb-6 liquid-text"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 3 }}
+        transition={{ duration: 0.8, delay: 3 }}
       >
-        Aryaman Mohta
+        <TextReveal text="Aryaman Mohta" effect="glitch" delay={3.2} />
       </motion.h1>
       
 

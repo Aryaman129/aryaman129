@@ -11,6 +11,7 @@ import AboutSection from './sections/AboutSection'
 import LoadingScreen from './ui/LoadingScreen'
 import WebGLErrorBoundary, { isWebGLSupported } from './ui/WebGLErrorBoundary'
 import { motion } from 'framer-motion'
+import TextReveal from './ui/TextReveal'
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
@@ -169,57 +170,54 @@ const AIPortfolio = () => {
             className="text-center max-w-2xl mx-auto px-6"
           >
             <h2 className="text-5xl font-bold mb-8 liquid-text">
-              Ready to Connect?
+              <TextReveal text="Ready to Connect?" effect="fade" delay={0.5} />
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
               Let's build the future together through AI and full-stack innovation.
             </p>
             <motion.div
               className="glass-card p-8 rounded-2xl nexus-border"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
+              style={{ pointerEvents: 'auto' }}
             >
               <div className="grid grid-cols-2 gap-4 text-lg">
-                <div className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors">
+                <a 
+                  href="mailto:aryamanmohta@gmail.com" 
+                  className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors text-primary hover:text-primary-glow cursor-pointer"
+                  style={{ pointerEvents: 'auto' }}
+                >
                   <span className="text-2xl">📧</span>
-                  <a 
-                    href="mailto:aryamanmohta@gmail.com" 
-                    className="text-primary hover:text-primary-glow transition-colors text-center"
-                  >
-                    Gmail
-                  </a>
-                </div>
-                <div className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors">
+                  <span className="text-center">Gmail</span>
+                </a>
+                <a 
+                  href="tel:+919309114125" 
+                  className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors text-primary hover:text-primary-glow cursor-pointer"
+                  style={{ pointerEvents: 'auto' }}
+                >
                   <span className="text-2xl">📱</span>
-                  <a 
-                    href="tel:+919309114125" 
-                    className="text-primary hover:text-primary-glow transition-colors text-center"
-                  >
-                    Phone
-                  </a>
-                </div>
-                <div className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors">
+                  <span className="text-center">Phone</span>
+                </a>
+                <a 
+                  href="https://www.linkedin.com/in/aryaman-mohta-53b715308" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors text-primary hover:text-primary-glow cursor-pointer"
+                  style={{ pointerEvents: 'auto' }}
+                >
                   <span className="text-2xl">💼</span>
-                  <a 
-                    href="https://www.linkedin.com/in/aryaman-mohta-53b715308" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:text-primary-glow transition-colors text-center"
-                  >
-                    LinkedIn
-                  </a>
-                </div>
-                <div className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors">
+                  <span className="text-center">LinkedIn</span>
+                </a>
+                <a 
+                  href="https://github.com/Aryaman129/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors text-primary hover:text-primary-glow cursor-pointer"
+                  style={{ pointerEvents: 'auto' }}
+                >
                   <span className="text-2xl">💻</span>
-                  <a 
-                    href="https://github.com/Aryaman129/" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:text-primary-glow transition-colors text-center"
-                  >
-                    GitHub
-                  </a>
-                </div>
+                  <span className="text-center">GitHub</span>
+                </a>
                 <div className="col-span-2 text-center text-muted-foreground mt-4">
                   B.Tech Computer Science Engineering<br />
                   SRM University, KTR

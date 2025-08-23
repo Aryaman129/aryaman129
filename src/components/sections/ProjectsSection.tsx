@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import ProjectCard from '../ui/ProjectCard'
+import TextReveal from '../ui/TextReveal'
 
 const projectsData = [
   {
@@ -123,7 +124,7 @@ const ProjectsSection = () => {
         className="text-center mb-16"
       >
         <h2 className="text-5xl md:text-6xl font-bold mb-6 liquid-text">
-          Major Projects
+          <TextReveal text="Major Projects" effect="typewriter" delay={0.3} />
         </h2>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           From production-grade full-stack applications to experimental AI orchestration frameworks,
