@@ -10,27 +10,29 @@ interface TextRevealProps {
 
 const TextReveal = ({ text, effect = 'blur', className = '', delay = 0 }: TextRevealProps) => {
   const [displayText, setDisplayText] = useState('')
-  const [isRevealed, setIsRevealed] = useState(false)
+  const [isComplete, setIsComplete] = useState(false)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (effect === 'scramble') {
-        scrambleEffect()
-      } else if (effect === 'typewriter') {
-        typewriterEffect()
-      } else {
-        setDisplayText(text)
-        setIsRevealed(true)
-      }
-    }, delay * 1000)
-
-    return () => clearTimeout(timer)
+    // For scramble and typewriter, we need to manage the text state
+    if (effect === 'scramble' || effect === 'typewriter') {
+      const timer = setTimeout(() => {
+        if (effect === 'scramble') {
+          scrambleText()
+        } else if (effect === 'typewriter') {
+          typeText()
+        }
+      }, delay * 1000)
+      return () => clearTimeout(timer)
+    } else {
+      // For other effects, show immediately but let animation handle the reveal
+      setDisplayText(text)
+      setIsComplete(true)
+    }
   }, [text, effect, delay])
 
-  const scrambleEffect = () => {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*'
+  const scrambleText = () => {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
     let iterations = 0
-    const maxIterations = text.length
     
     const interval = setInterval(() => {
       setDisplayText(text.split('').map((char, index) => {
@@ -39,32 +41,33 @@ const TextReveal = ({ text, effect = 'blur', className = '', delay = 0 }: TextRe
         return chars[Math.floor(Math.random() * chars.length)]
       }).join(''))
       
-      iterations += 0.5
-      if (iterations >= maxIterations) {
+      iterations += 0.3
+      if (iterations >= text.length) {
         clearInterval(interval)
         setDisplayText(text)
-        setIsRevealed(true)
+        setIsComplete(true)
       }
-    }, 50)
+    }, 60)
   }
 
-  const typewriterEffect = () => {
+  const typeText = () => {
     let i = 0
     const interval = setInterval(() => {
-      setDisplayText(text.slice(0, i))
+      setDisplayText(text.slice(0, i + 1))
       i++
-      if (i > text.length) {
+      if (i >= text.length) {
         clearInterval(interval)
-        setIsRevealed(true)
+        setIsComplete(true)
       }
-    }, 1500 / text.length)
+    }, 100)
   }
 
+  // Blur effect
   if (effect === 'blur') {
     return (
       <motion.span
         className={className}
-        initial={{ filter: 'blur(10px)', opacity: 0 }}
+        initial={{ filter: 'blur(8px)', opacity: 0.3 }}
         animate={{ filter: 'blur(0px)', opacity: 1 }}
         transition={{ duration: 1.5, delay }}
       >
@@ -73,19 +76,21 @@ const TextReveal = ({ text, effect = 'blur', className = '', delay = 0 }: TextRe
     )
   }
 
+  // Fall effect - characters falling from top
   if (effect === 'fall') {
+    const words = text.split(' ')
     return (
       <span className={className}>
-        {text.split(' ').map((word, wordIndex) => (
-          <span key={wordIndex} className="inline-block mr-4">
+        {words.map((word, wordIndex) => (
+          <span key={wordIndex} className="inline-block">
             {word.split('').map((char, charIndex) => (
               <motion.span
                 key={`${wordIndex}-${charIndex}`}
                 className="inline-block"
-                initial={{ y: -100, opacity: 0, rotateX: -90 }}
-                animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
                 transition={{
-                  duration: 0.8,
+                  duration: 0.6,
                   delay: delay + (wordIndex * 0.1) + (charIndex * 0.05),
                   type: 'spring',
                   stiffness: 200
@@ -94,33 +99,45 @@ const TextReveal = ({ text, effect = 'blur', className = '', delay = 0 }: TextRe
                 {char}
               </motion.span>
             ))}
+            {wordIndex < words.length - 1 && (
+              <motion.span
+                className="inline-block"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: delay + (wordIndex * 0.1) + (word.length * 0.05) }}
+              >
+                &nbsp;
+              </motion.span>
+            )}
           </span>
         ))}
       </span>
     )
   }
 
+  // Slide effect
   if (effect === 'slide') {
     return (
       <motion.span
         className={className}
-        initial={{ x: -100, opacity: 0 }}
+        initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 1.2, delay, type: 'spring', stiffness: 100 }}
+        transition={{ duration: 1, delay, type: 'spring', stiffness: 150 }}
       >
         {text}
       </motion.span>
     )
   }
 
+  // Scramble and typewriter effects
   return (
     <motion.span
       className={className}
       initial={{ opacity: 0 }}
-      animate={{ opacity: isRevealed ? 1 : 0.7 }}
-      transition={{ duration: 0.3 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3, delay }}
     >
-      {displayText}
+      {displayText || text}
     </motion.span>
   )
 }
