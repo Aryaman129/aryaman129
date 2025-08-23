@@ -124,7 +124,7 @@ const ProjectsSection = () => {
         className="text-center mb-16"
       >
         <h2 className="text-5xl md:text-6xl font-bold mb-6 liquid-text">
-          <TextReveal text="Major Projects" effect="typewriter" delay={0.3} />
+          <TextReveal text="Major Projects" effect="scramble" delay={0.3} />
         </h2>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           From production-grade full-stack applications to experimental AI orchestration frameworks,
@@ -160,7 +160,9 @@ const ProjectsSection = () => {
         viewport={{ once: true }}
         className="mt-20 text-center"
       >
-        <h3 className="text-3xl font-bold mb-8 text-primary">Other Experiments</h3>
+        <h3 className="text-3xl font-bold mb-8 text-primary">
+          <TextReveal text="Other Experiments" effect="slide" delay={0.7} />
+        </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             { name: 'Autonomus_Ai — Multi-Agent Prototype', tech: 'PyTorch + LangChain' },

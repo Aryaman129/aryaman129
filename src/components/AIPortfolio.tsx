@@ -171,7 +171,7 @@ const AIPortfolio = () => {
             style={{ pointerEvents: 'auto' }}
           >
             <h2 className="text-5xl font-bold mb-8 liquid-text">
-              <TextReveal text="Ready to Connect?" effect="fade" delay={0.5} />
+              <TextReveal text="Ready to Connect?" effect="typewriter" delay={0.5} />
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
               Let's build the future together through AI and full-stack innovation.
