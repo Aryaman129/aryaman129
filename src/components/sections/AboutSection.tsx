@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
-import { TextRevealEffects } from '../ui/TextRevealEffects'
 
 const AboutSection = () => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -66,7 +65,7 @@ const AboutSection = () => {
         className="text-center mb-16"
       >
         <h2 className="text-5xl md:text-6xl font-bold mb-6 liquid-text">
-          <TextRevealEffects text="About Me" effect="glitch" delay={0.2} />
+          About Me
         </h2>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
           I specialize in building production-grade applications and experimental AI systems. 

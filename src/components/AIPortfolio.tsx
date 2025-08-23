@@ -11,7 +11,6 @@ import AboutSection from './sections/AboutSection'
 import LoadingScreen from './ui/LoadingScreen'
 import WebGLErrorBoundary, { isWebGLSupported } from './ui/WebGLErrorBoundary'
 import { motion } from 'framer-motion'
-import { TextRevealEffects } from './ui/TextRevealEffects'
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
@@ -170,7 +169,7 @@ const AIPortfolio = () => {
             className="text-center max-w-2xl mx-auto px-6"
           >
             <h2 className="text-5xl font-bold mb-8 liquid-text">
-              <TextRevealEffects text="Ready to Connect?" effect="blur" delay={0.5} />
+              Ready to Connect?
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
               Let's build the future together through AI and full-stack innovation.
