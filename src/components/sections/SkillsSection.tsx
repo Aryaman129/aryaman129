@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import TextReveal from '../ui/TextReveal'
 
 const skillsData = {
   'Frontend': {
@@ -60,7 +59,7 @@ const SkillsSection = () => {
         className="text-center mb-16"
       >
         <h2 className="text-5xl md:text-6xl font-bold mb-6 liquid-text">
-          <TextReveal text="Technical Skills" effect="fade" delay={0.4} />
+          Technical Skills
         </h2>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           A comprehensive tech stack spanning from frontend frameworks to AI orchestration,
