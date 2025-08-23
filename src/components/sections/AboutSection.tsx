@@ -6,26 +6,27 @@ const AboutSection = () => {
   const containerRef = useRef<HTMLDivElement>(null)
   
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.about-card',
-        { opacity: 0, y: 50, scale: 0.9 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top 80%',
-          }
-        }
-      )
-    }, containerRef)
+    // Temporarily disabled GSAP animations
+    // const ctx = gsap.context(() => {
+    //   gsap.fromTo(
+    //     '.about-card',
+    //     { opacity: 0, y: 50, scale: 0.9 },
+    //     {
+    //       opacity: 1,
+    //       y: 0,
+    //       scale: 1,
+    //       duration: 0.8,
+    //       stagger: 0.1,
+    //       ease: 'power3.out',
+    //       scrollTrigger: {
+    //         trigger: containerRef.current,
+    //         start: 'top 80%',
+    //       }
+    //     }
+    //   )
+    // }, containerRef)
 
-    return () => ctx.revert()
+    // return () => ctx.revert()
   }, [])
 
   const aboutPoints = [

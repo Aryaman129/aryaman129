@@ -10,33 +10,34 @@ const LiquidSphere = () => {
 
   useEffect(() => {
     if (meshRef.current) {
-      // Entrance animation
-      gsap.fromTo(
-        meshRef.current.scale,
-        { x: 0, y: 0, z: 0 },
-        { 
-          x: 1, 
-          y: 1, 
-          z: 1, 
-          duration: 2, 
-          ease: 'elastic.out(1, 0.3)',
-          delay: 1
-        }
-      )
+      // Temporarily disabled GSAP animations to debug Framer Motion easing conflict
+      // // Entrance animation
+      // gsap.fromTo(
+      //   meshRef.current.scale,
+      //   { x: 0, y: 0, z: 0 },
+      //   { 
+      //     x: 1, 
+      //     y: 1, 
+      //     z: 1, 
+      //     duration: 2, 
+      //     ease: 'elastic.out(1, 0.3)',
+      //     delay: 1
+      //   }
+      // )
 
-      // Initial rotation animation
-      gsap.fromTo(
-        meshRef.current.rotation,
-        { x: 0, y: 0, z: 0 },
-        { 
-          x: Math.PI * 0.1, 
-          y: Math.PI * 0.2, 
-          z: 0, 
-          duration: 3, 
-          ease: 'power2.out',
-          delay: 2
-        }
-      )
+      // // Initial rotation animation
+      // gsap.fromTo(
+      //   meshRef.current.rotation,
+      //   { x: 0, y: 0, z: 0 },
+      //   { 
+      //     x: Math.PI * 0.1, 
+      //     y: Math.PI * 0.2, 
+      //     z: 0, 
+      //     duration: 3, 
+      //     ease: 'power2.out',
+      //     delay: 2
+      //   }
+      // )
     }
   }, [])
 

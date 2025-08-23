@@ -8,25 +8,26 @@ const IntroSection = () => {
   const descriptionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const tl = gsap.timeline({ delay: 3 }) // Wait for 3D animation
+    // Temporarily disabled GSAP animations
+    // const tl = gsap.timeline({ delay: 3 }) // Wait for 3D animation
 
-    tl.fromTo(
-      titleRef.current,
-      { opacity: 0, y: 100 },
-      { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }
-    )
-    .fromTo(
-      subtitleRef.current,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-      '-=0.5'
-    )
-    .fromTo(
-      descriptionRef.current,
-      { opacity: 0, scale: 0.8 },
-      { opacity: 1, scale: 1, duration: 1, ease: 'back.out(1.7)' },
-      '-=0.3'
-    )
+    // tl.fromTo(
+    //   titleRef.current,
+    //   { opacity: 0, y: 100 },
+    //   { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }
+    // )
+    // .fromTo(
+    //   subtitleRef.current,
+    //   { opacity: 0, y: 50 },
+    //   { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+    //   '-=0.5'
+    // )
+    // .fromTo(
+    //   descriptionRef.current,
+    //   { opacity: 0, scale: 0.8 },
+    //   { opacity: 1, scale: 1, duration: 1, ease: 'back.out(1.7)' },
+    //   '-=0.3'
+    // )
   }, [])
 
   return (
