@@ -67,7 +67,7 @@ const AboutSection = () => {
         className="text-center mb-16"
       >
         <h2 className="text-5xl md:text-6xl font-bold mb-6 liquid-text">
-          <TextReveal text="About Me" effect="blur" delay={0.2} />
+          <TextReveal text="About Me" effect="slide" delay={0.2} />
         </h2>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
           I specialize in building production-grade applications and experimental AI systems. 
@@ -140,7 +140,7 @@ const AboutSection = () => {
         viewport={{ once: true }}
       >
         <h3 className="text-3xl font-bold mb-6 text-center liquid-text">
-          <TextReveal text="My Journey" effect="blur" delay={0.6} />
+          My Journey
         </h3>
         
         <div className="max-w-4xl mx-auto">

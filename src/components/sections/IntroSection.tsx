@@ -36,11 +36,11 @@ const IntroSection = () => {
       <motion.h1
         ref={titleRef}
         className="text-7xl md:text-8xl font-bold mb-6 liquid-text"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 3 }}
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 2, delay: 3 }}
       >
-        <TextReveal text="Aryaman Mohta" effect="fall" delay={3.2} />
+        <TextReveal text="Aryaman Mohta" effect="fade" delay={3.2} />
       </motion.h1>
       
 
