@@ -34,7 +34,7 @@ const TextReveal = ({ text, effect = 'fade', className = '', delay = 0 }: TextRe
         clearInterval(interval)
         setIsComplete(true)
       }
-    }, 50)
+    }, 2000 / text.length) // Spread over 2 seconds
   }
 
   if (effect === 'fade') {
@@ -43,7 +43,7 @@ const TextReveal = ({ text, effect = 'fade', className = '', delay = 0 }: TextRe
         className={className}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay }}
+        transition={{ duration: 2, delay }}
       >
         {text}
       </motion.span>
@@ -56,7 +56,7 @@ const TextReveal = ({ text, effect = 'fade', className = '', delay = 0 }: TextRe
         className={className}
         initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay, type: 'spring', stiffness: 100 }}
+        transition={{ duration: 2, delay, type: 'spring', stiffness: 100 }}
       >
         {text}
       </motion.span>
@@ -67,27 +67,11 @@ const TextReveal = ({ text, effect = 'fade', className = '', delay = 0 }: TextRe
     return (
       <motion.span
         className={className}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 2, delay }}
       >
-        <motion.span
-          animate={{ 
-            x: isComplete ? 0 : [0, -2, 2, 0],
-            textShadow: isComplete ? 'none' : [
-              '0 0 0 transparent',
-              '2px 0 0 #ff0000, -2px 0 0 #00ffff',
-              '0 0 0 transparent'
-            ]
-          }}
-          transition={{ 
-            duration: 0.2, 
-            repeat: isComplete ? 0 : 3,
-            delay
-          }}
-        >
-          {text}
-        </motion.span>
+        {text}
       </motion.span>
     )
   }

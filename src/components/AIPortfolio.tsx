@@ -162,12 +162,13 @@ const AIPortfolio = () => {
         </section>
 
         {/* Final Section with Neural Network Animation */}
-        <section className="min-h-screen flex items-center justify-center relative">
+        <section className="min-h-screen flex items-center justify-center relative" style={{ pointerEvents: 'auto' }}>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, type: "spring" }}
             className="text-center max-w-2xl mx-auto px-6"
+            style={{ pointerEvents: 'auto' }}
           >
             <h2 className="text-5xl font-bold mb-8 liquid-text">
               <TextReveal text="Ready to Connect?" effect="fade" delay={0.5} />
@@ -175,25 +176,31 @@ const AIPortfolio = () => {
             <p className="text-xl text-muted-foreground mb-8">
               Let's build the future together through AI and full-stack innovation.
             </p>
-            <motion.div
+            <div 
               className="glass-card p-8 rounded-2xl nexus-border"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
               style={{ pointerEvents: 'auto' }}
             >
-              <div className="grid grid-cols-2 gap-4 text-lg">
+              <div className="grid grid-cols-2 gap-4 text-lg" style={{ pointerEvents: 'auto' }}>
                 <a 
                   href="mailto:aryamanmohta@gmail.com" 
-                  className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors text-primary hover:text-primary-glow cursor-pointer"
-                  style={{ pointerEvents: 'auto' }}
+                  className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors text-primary hover:text-primary-glow cursor-pointer border border-transparent hover:border-primary/20"
+                  style={{ pointerEvents: 'auto', zIndex: 1000 }}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    window.location.href = 'mailto:aryamanmohta@gmail.com'
+                  }}
                 >
                   <span className="text-2xl">📧</span>
                   <span className="text-center">Gmail</span>
                 </a>
                 <a 
                   href="tel:+919309114125" 
-                  className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors text-primary hover:text-primary-glow cursor-pointer"
-                  style={{ pointerEvents: 'auto' }}
+                  className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors text-primary hover:text-primary-glow cursor-pointer border border-transparent hover:border-primary/20"
+                  style={{ pointerEvents: 'auto', zIndex: 1000 }}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    window.location.href = 'tel:+919309114125'
+                  }}
                 >
                   <span className="text-2xl">📱</span>
                   <span className="text-center">Phone</span>
@@ -202,8 +209,12 @@ const AIPortfolio = () => {
                   href="https://www.linkedin.com/in/aryaman-mohta-53b715308" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors text-primary hover:text-primary-glow cursor-pointer"
-                  style={{ pointerEvents: 'auto' }}
+                  className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors text-primary hover:text-primary-glow cursor-pointer border border-transparent hover:border-primary/20"
+                  style={{ pointerEvents: 'auto', zIndex: 1000 }}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    window.open('https://www.linkedin.com/in/aryaman-mohta-53b715308', '_blank')
+                  }}
                 >
                   <span className="text-2xl">💼</span>
                   <span className="text-center">LinkedIn</span>
@@ -212,8 +223,12 @@ const AIPortfolio = () => {
                   href="https://github.com/Aryaman129/" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors text-primary hover:text-primary-glow cursor-pointer"
-                  style={{ pointerEvents: 'auto' }}
+                  className="flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors text-primary hover:text-primary-glow cursor-pointer border border-transparent hover:border-primary/20"
+                  style={{ pointerEvents: 'auto', zIndex: 1000 }}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    window.open('https://github.com/Aryaman129/', '_blank')
+                  }}
                 >
                   <span className="text-2xl">💻</span>
                   <span className="text-center">GitHub</span>
@@ -223,7 +238,7 @@ const AIPortfolio = () => {
                   SRM University, KTR
                 </div>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         </section>
       </div>
