@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import ProjectCard from '../ui/ProjectCard'
-import TextRevealEffects from '../ui/TextRevealEffects'
+import { TextRevealEffects } from '../ui/TextRevealEffects'
 
 const projectsData = [
   {
@@ -119,7 +119,7 @@ const ProjectsSection = () => {
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: 'power3.out' }}
+        transition={{ duration: 1, ease: 'easeOut' }}
         viewport={{ once: true }}
         className="text-center mb-16"
       >

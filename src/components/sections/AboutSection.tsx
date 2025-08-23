@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
-import TextRevealEffects from '../ui/TextRevealEffects'
+import { TextRevealEffects } from '../ui/TextRevealEffects'
 
 const AboutSection = () => {
   const containerRef = useRef<HTMLDivElement>(null)

@@ -11,7 +11,7 @@ import AboutSection from './sections/AboutSection'
 import LoadingScreen from './ui/LoadingScreen'
 import WebGLErrorBoundary, { isWebGLSupported } from './ui/WebGLErrorBoundary'
 import { motion } from 'framer-motion'
-import TextRevealEffects from './ui/TextRevealEffects'
+import { TextRevealEffects } from './ui/TextRevealEffects'
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {

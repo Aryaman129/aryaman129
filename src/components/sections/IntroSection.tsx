@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import TextRevealEffects from '../ui/TextRevealEffects'
+import { TextRevealEffects } from '../ui/TextRevealEffects'
 
 const IntroSection = () => {
   const titleRef = useRef<HTMLHeadingElement>(null)

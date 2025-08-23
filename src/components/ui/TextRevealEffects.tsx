@@ -8,7 +8,7 @@ interface TextRevealProps {
   delay?: number
 }
 
-const TextRevealEffects = ({ text, effect = 'blur', className = '', delay = 0 }: TextRevealProps) => {
+export const TextRevealEffects = ({ text, effect = 'blur', className = '', delay = 0 }: TextRevealProps) => {
   const [displayText, setDisplayText] = useState('')
   const [isRevealed, setIsRevealed] = useState(false)
 
