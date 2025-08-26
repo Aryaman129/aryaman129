@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 
@@ -101,7 +100,7 @@ const SkillsSection = () => {
                     x: ['-100%', '100%'],
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 4,
                     repeat: Infinity,
                     ease: 'linear'
                   }}
@@ -117,10 +116,10 @@ const SkillsSection = () => {
                     y: ['-100%', '100%'],
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 4,
                     repeat: Infinity,
                     ease: 'linear',
-                    delay: 0.5
+                    delay: 1
                   }}
                 />
                 
@@ -134,10 +133,10 @@ const SkillsSection = () => {
                     x: ['100%', '-100%'],
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 4,
                     repeat: Infinity,
                     ease: 'linear',
-                    delay: 1
+                    delay: 2
                   }}
                 />
                 
@@ -151,10 +150,10 @@ const SkillsSection = () => {
                     y: ['100%', '-100%'],
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 4,
                     repeat: Infinity,
                     ease: 'linear',
-                    delay: 1.5
+                    delay: 3
                   }}
                 />
                 
@@ -166,7 +165,7 @@ const SkillsSection = () => {
                     opacity: [0.5, 1, 0.5]
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 3,
                     repeat: Infinity,
                     ease: 'easeInOut'
                   }}
@@ -178,10 +177,10 @@ const SkillsSection = () => {
                     opacity: [0.5, 1, 0.5]
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 3,
                     repeat: Infinity,
                     ease: 'easeInOut',
-                    delay: 0.5
+                    delay: 1
                   }}
                 />
                 <motion.div
@@ -191,10 +190,10 @@ const SkillsSection = () => {
                     opacity: [0.5, 1, 0.5]
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 3,
                     repeat: Infinity,
                     ease: 'easeInOut',
-                    delay: 1
+                    delay: 2
                   }}
                 />
                 <motion.div
@@ -204,10 +203,10 @@ const SkillsSection = () => {
                     opacity: [0.5, 1, 0.5]
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 3,
                     repeat: Infinity,
                     ease: 'easeInOut',
-                    delay: 1.5
+                    delay: 3
                   }}
                 />
               </>
@@ -250,7 +249,7 @@ const SkillsSection = () => {
                     rotate: [0, 360]
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 4,
                     repeat: Infinity,
                     ease: 'linear'
                   }}
@@ -268,7 +267,7 @@ const SkillsSection = () => {
                     opacity: [0.6, 1, 1, 1, 0.6]
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 4,
                     repeat: Infinity,
                     ease: 'linear'
                   }}
