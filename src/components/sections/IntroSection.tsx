@@ -14,7 +14,7 @@ const IntroSection = () => {
 
   useEffect(() => {
     let iteration = 0
-    const intervalDuration = 50
+    const intervalDuration = 30 // Reduced from 50 to 30
     const totalIterations = 60
 
     // Start the jumble effect after initial delay
@@ -37,7 +37,7 @@ const IntroSection = () => {
           setDisplayText(finalText)
         }
 
-        iteration += 1 / 3
+        iteration += 1 / 2 // Increased from 1/3 to 1/2 for faster progression
       }, intervalDuration)
     }, 3000) // Start after 3 second delay
 
