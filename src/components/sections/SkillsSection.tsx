@@ -1,5 +1,4 @@
 
-
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 
@@ -218,7 +217,7 @@ const SkillsSection = () => {
         ))}
       </motion.div>
 
-      {/* Subcategory Selector - back to original */}
+      {/* Subcategory Selector */}
       <motion.div
         key={activeCategory}
         initial={{ opacity: 0, x: -50 }}
@@ -230,7 +229,7 @@ const SkillsSection = () => {
           <motion.button
             key={subcategory}
             onClick={() => setActiveSubcategory(subcategory)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+            className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 overflow-hidden ${
               activeSubcategory === subcategory
                 ? 'bg-secondary text-secondary-foreground'
                 : 'bg-muted/30 text-muted-foreground hover:bg-muted/50'
@@ -238,7 +237,28 @@ const SkillsSection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {subcategory}
+            {/* Animated border for active subcategory */}
+            {activeSubcategory === subcategory && (
+              <>
+                <motion.div
+                  className="absolute inset-0 rounded-lg"
+                  style={{
+                    background: 'linear-gradient(90deg, hsl(0 100% 50%), hsl(120 100% 50%), hsl(240 100% 50%), hsl(0 100% 50%))',
+                    backgroundSize: '300% 300%',
+                  }}
+                  animate={{
+                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: 'linear'
+                  }}
+                />
+                <div className="absolute inset-[1px] bg-secondary rounded-lg" />
+              </>
+            )}
+            <span className="relative z-10">{subcategory}</span>
           </motion.button>
         ))}
       </motion.div>
@@ -435,4 +455,3 @@ const SkillsSection = () => {
 }
 
 export default SkillsSection
-
