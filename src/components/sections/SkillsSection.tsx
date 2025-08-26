@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 
@@ -79,15 +80,37 @@ const SkillsSection = () => {
           <motion.button
             key={category}
             onClick={() => handleCategoryChange(category)}
-            className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+            className={`relative px-6 py-3 rounded-xl font-medium transition-all duration-300 overflow-hidden ${
               activeCategory === category
-                ? 'glass-card neural-glow text-primary border border-primary/50'
+                ? 'glass-card text-primary'
                 : 'bg-muted/50 text-muted-foreground hover:bg-muted'
             }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {category}
+            {/* Liquid RGB rotating border for active button */}
+            {activeCategory === category && (
+              <motion.div
+                className="absolute inset-0 rounded-xl"
+                style={{
+                  background: 'conic-gradient(from 0deg, hsl(0 100% 50%), hsl(60 100% 50%), hsl(120 100% 50%), hsl(180 100% 50%), hsl(240 100% 50%), hsl(300 100% 50%), hsl(360 100% 50%))',
+                  padding: '2px',
+                  mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  maskComposite: 'xor',
+                  WebkitMaskComposite: 'xor'
+                }}
+                animate={{
+                  rotate: [0, 360]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'linear'
+                }}
+              />
+            )}
+            <span className="relative z-10">{category}</span>
           </motion.button>
         ))}
       </motion.div>
@@ -104,15 +127,37 @@ const SkillsSection = () => {
           <motion.button
             key={subcategory}
             onClick={() => setActiveSubcategory(subcategory)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+            className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 overflow-hidden ${
               activeSubcategory === subcategory
-                ? 'bg-secondary text-secondary-foreground'
+                ? 'text-secondary-foreground'
                 : 'bg-muted/30 text-muted-foreground hover:bg-muted/50'
             }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {subcategory}
+            {/* Liquid RGB rotating border for active subcategory */}
+            {activeSubcategory === subcategory && (
+              <motion.div
+                className="absolute inset-0 rounded-lg"
+                style={{
+                  background: 'conic-gradient(from 0deg, hsl(180 100% 50%), hsl(240 100% 60%), hsl(300 100% 70%), hsl(60 100% 50%), hsl(120 100% 50%), hsl(180 100% 50%))',
+                  padding: '1px',
+                  mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  maskComposite: 'xor',
+                  WebkitMaskComposite: 'xor'
+                }}
+                animate={{
+                  rotate: [0, 360]
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: 'linear'
+                }}
+              />
+            )}
+            <span className="relative z-10">{subcategory}</span>
           </motion.button>
         ))}
       </motion.div>
