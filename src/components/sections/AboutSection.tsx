@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion'
 import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
@@ -59,9 +60,14 @@ const AboutSection = () => {
   return (
     <div ref={containerRef} className="max-w-6xl mx-auto px-6">
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ 
+          duration: 0.8,
+          type: "spring",
+          stiffness: 100,
+          damping: 15
+        }}
         viewport={{ once: true }}
         className="text-center mb-16"
       >
