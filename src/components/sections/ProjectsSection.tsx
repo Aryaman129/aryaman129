@@ -4,7 +4,7 @@ import ProjectCard from '../ui/ProjectCard'
 const projectsData = [
   {
     title: 'Academia2 — SRM Student Companion',
-    status: 'Completed, deployed (prod-like)',
+    status: 'Completed',
     description: 'A full-stack student portal for SRM University students, combining scraping, real-time updates, and offline PWA support. Unified dashboard for attendance, marks, timetable, predictions, and reminders.',
     techStack: ['React 18 (PWA)', 'Flask (Python)', 'Supabase (Postgres)', 'Selenium', 'JWT authentication', 'Docker', 'Socket.IO'],
     features: [
@@ -45,7 +45,7 @@ const projectsData = [
     gradient: 'from-secondary to-accent'
   },
   {
-    title: 'GDG — Conference Management System',
+    title: 'Conference Management System',
     status: 'Complete (Render demo deploy)',
     description: 'A conference system for managing speakers, attendees, sessions, and check-ins.',
     techStack: ['Next.js (React/TypeScript)', 'Express.js (TypeScript)', 'Prisma ORM', 'SQLite (dev)', 'JWT + OTP flows', 'qrcode library', 'Docker + Compose'],
