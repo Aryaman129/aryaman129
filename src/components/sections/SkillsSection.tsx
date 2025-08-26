@@ -1,4 +1,5 @@
 
+
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 
@@ -88,34 +89,136 @@ const SkillsSection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {/* Liquid RGB rotating border for active button */}
+            {/* Fluid neon RGB border flowing around edges */}
             {activeCategory === category && (
-              <motion.div
-                className="absolute inset-0 rounded-xl"
-                style={{
-                  background: 'conic-gradient(from 0deg, hsl(0 100% 50%), hsl(60 100% 50%), hsl(120 100% 50%), hsl(180 100% 50%), hsl(240 100% 50%), hsl(300 100% 50%), hsl(360 100% 50%))',
-                  padding: '2px',
-                  mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                  maskComposite: 'xor',
-                  WebkitMaskComposite: 'xor'
-                }}
-                animate={{
-                  rotate: [0, 360]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: 'linear'
-                }}
-              />
+              <>
+                {/* Top edge */}
+                <motion.div
+                  className="absolute top-0 left-0 w-full h-0.5 rounded-full"
+                  style={{
+                    background: 'linear-gradient(90deg, transparent, hsl(0 100% 50%), hsl(60 100% 50%), hsl(120 100% 50%), transparent)',
+                  }}
+                  animate={{
+                    x: ['-100%', '100%'],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'linear'
+                  }}
+                />
+                
+                {/* Right edge */}
+                <motion.div
+                  className="absolute top-0 right-0 h-full w-0.5 rounded-full"
+                  style={{
+                    background: 'linear-gradient(180deg, transparent, hsl(120 100% 50%), hsl(180 100% 50%), hsl(240 100% 50%), transparent)',
+                  }}
+                  animate={{
+                    y: ['-100%', '100%'],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'linear',
+                    delay: 0.5
+                  }}
+                />
+                
+                {/* Bottom edge */}
+                <motion.div
+                  className="absolute bottom-0 right-0 w-full h-0.5 rounded-full"
+                  style={{
+                    background: 'linear-gradient(270deg, transparent, hsl(240 100% 50%), hsl(300 100% 50%), hsl(0 100% 50%), transparent)',
+                  }}
+                  animate={{
+                    x: ['100%', '-100%'],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'linear',
+                    delay: 1
+                  }}
+                />
+                
+                {/* Left edge */}
+                <motion.div
+                  className="absolute bottom-0 left-0 h-full w-0.5 rounded-full"
+                  style={{
+                    background: 'linear-gradient(0deg, transparent, hsl(300 100% 50%), hsl(320 100% 50%), hsl(0 100% 50%), transparent)',
+                  }}
+                  animate={{
+                    y: ['100%', '-100%'],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'linear',
+                    delay: 1.5
+                  }}
+                />
+                
+                {/* Corner glow dots */}
+                <motion.div
+                  className="absolute top-0 left-0 w-2 h-2 bg-primary rounded-full blur-sm"
+                  animate={{
+                    scale: [1, 1.5, 1],
+                    opacity: [0.5, 1, 0.5]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut'
+                  }}
+                />
+                <motion.div
+                  className="absolute top-0 right-0 w-2 h-2 bg-secondary rounded-full blur-sm"
+                  animate={{
+                    scale: [1, 1.5, 1],
+                    opacity: [0.5, 1, 0.5]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: 0.5
+                  }}
+                />
+                <motion.div
+                  className="absolute bottom-0 right-0 w-2 h-2 bg-accent rounded-full blur-sm"
+                  animate={{
+                    scale: [1, 1.5, 1],
+                    opacity: [0.5, 1, 0.5]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: 1
+                  }}
+                />
+                <motion.div
+                  className="absolute bottom-0 left-0 w-2 h-2 bg-primary rounded-full blur-sm"
+                  animate={{
+                    scale: [1, 1.5, 1],
+                    opacity: [0.5, 1, 0.5]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: 1.5
+                  }}
+                />
+              </>
             )}
             <span className="relative z-10">{category}</span>
           </motion.button>
         ))}
       </motion.div>
 
-      {/* Subcategory Selector */}
+      {/* Subcategory Selector - back to original */}
       <motion.div
         key={activeCategory}
         initial={{ opacity: 0, x: -50 }}
@@ -127,37 +230,15 @@ const SkillsSection = () => {
           <motion.button
             key={subcategory}
             onClick={() => setActiveSubcategory(subcategory)}
-            className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 overflow-hidden ${
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
               activeSubcategory === subcategory
-                ? 'text-secondary-foreground'
+                ? 'bg-secondary text-secondary-foreground'
                 : 'bg-muted/30 text-muted-foreground hover:bg-muted/50'
             }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {/* Liquid RGB rotating border for active subcategory */}
-            {activeSubcategory === subcategory && (
-              <motion.div
-                className="absolute inset-0 rounded-lg"
-                style={{
-                  background: 'conic-gradient(from 0deg, hsl(180 100% 50%), hsl(240 100% 60%), hsl(300 100% 70%), hsl(60 100% 50%), hsl(120 100% 50%), hsl(180 100% 50%))',
-                  padding: '1px',
-                  mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                  maskComposite: 'xor',
-                  WebkitMaskComposite: 'xor'
-                }}
-                animate={{
-                  rotate: [0, 360]
-                }}
-                transition={{
-                  duration: 2.5,
-                  repeat: Infinity,
-                  ease: 'linear'
-                }}
-              />
-            )}
-            <span className="relative z-10">{subcategory}</span>
+            {subcategory}
           </motion.button>
         ))}
       </motion.div>
@@ -354,3 +435,4 @@ const SkillsSection = () => {
 }
 
 export default SkillsSection
+
