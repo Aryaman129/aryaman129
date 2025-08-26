@@ -237,25 +237,42 @@ const SkillsSection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {/* Animated border for active subcategory */}
+            {/* Liquid RGB rotating border for active subcategory */}
             {activeSubcategory === subcategory && (
               <>
+                {/* Rotating RGB border that flows around corners */}
                 <motion.div
-                  className="absolute inset-0 rounded-lg"
+                  className="absolute inset-0 rounded-lg p-[2px]"
                   style={{
-                    background: 'linear-gradient(90deg, hsl(0 100% 50%), hsl(120 100% 50%), hsl(240 100% 50%), hsl(0 100% 50%))',
-                    backgroundSize: '300% 300%',
+                    background: 'conic-gradient(from 0deg, hsl(0 100% 50%), hsl(60 100% 50%), hsl(120 100% 50%), hsl(180 100% 50%), hsl(240 100% 50%), hsl(300 100% 50%), hsl(0 100% 50%))',
                   }}
                   animate={{
-                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                    rotate: [0, 360]
                   }}
                   transition={{
-                    duration: 3,
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'linear'
+                  }}
+                >
+                  <div className="w-full h-full bg-secondary rounded-lg" />
+                </motion.div>
+                
+                {/* Corner flowing dots */}
+                <motion.div
+                  className="absolute top-0 left-0 w-1 h-1 bg-primary rounded-full blur-sm"
+                  animate={{
+                    x: [0, '100%', '100%', 0, 0],
+                    y: [0, 0, '100%', '100%', 0],
+                    scale: [1, 1.2, 1.5, 1.2, 1],
+                    opacity: [0.6, 1, 1, 1, 0.6]
+                  }}
+                  transition={{
+                    duration: 2,
                     repeat: Infinity,
                     ease: 'linear'
                   }}
                 />
-                <div className="absolute inset-[1px] bg-secondary rounded-lg" />
               </>
             )}
             <span className="relative z-10">{subcategory}</span>
