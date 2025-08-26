@@ -1,13 +1,46 @@
+
 import { motion } from 'framer-motion'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 
 const IntroSection = () => {
   const titleRef = useRef<HTMLHeadingElement>(null)
   const subtitleRef = useRef<HTMLParagraphElement>(null)
   const descriptionRef = useRef<HTMLDivElement>(null)
+  const [displayText, setDisplayText] = useState('')
+
+  const finalText = 'Aryaman Mohta'
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*'
 
   useEffect(() => {
+    let iteration = 0
+    const intervalDuration = 50
+    const totalIterations = 60
+
+    // Start the jumble effect after initial delay
+    setTimeout(() => {
+      const interval = setInterval(() => {
+        setDisplayText(prev => 
+          finalText
+            .split('')
+            .map((letter, index) => {
+              if (index < iteration) {
+                return finalText[index]
+              }
+              return letter === ' ' ? ' ' : characters[Math.floor(Math.random() * characters.length)]
+            })
+            .join('')
+        )
+
+        if (iteration >= finalText.length) {
+          clearInterval(interval)
+          setDisplayText(finalText)
+        }
+
+        iteration += 1 / 3
+      }, intervalDuration)
+    }, 3000) // Start after 3 second delay
+
     // Temporarily disabled GSAP animations
     // const tl = gsap.timeline({ delay: 3 }) // Wait for 3D animation
 
@@ -34,12 +67,12 @@ const IntroSection = () => {
     <div className="text-center max-w-4xl mx-auto px-6 z-10 relative">
       <motion.h1
         ref={titleRef}
-        className="text-7xl md:text-8xl font-bold mb-6 liquid-text"
+        className="text-7xl md:text-8xl font-bold mb-6 liquid-text font-mono"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 2, delay: 3 }}
       >
-        Aryaman Mohta
+        {displayText || finalText}
       </motion.h1>
       
 
