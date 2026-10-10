@@ -1,73 +1,45 @@
-# Welcome to your Lovable project
+# Aryaman Mohta — Signal Engine
 
-## Project info
+An immersive, scroll-driven portfolio for software engineering, applied AI, mobile machine learning and automation.
 
-**URL**: https://lovable.dev/projects/7b2a6e04-b93d-409a-b2b4-bc33c9fd2ab1
+## Experience
 
-## How can I edit this code?
+- A brief, skippable signal-initialization sequence with scrambling/decode typography.
+- A persistent metallic 3D form that shifts position, scale and treatment across the sections.
+- Kinetic type, outline-to-solid headings, masked reveals and connected atmospheric transitions.
+- Project exhibits with CSS/2.5D visualizations for mobile ML, endpoint inspection, semantic retrieval and a student dashboard.
+- An interactive engineering loop and skill console.
+- Responsive layouts: mobile uses a different composition rather than a scaled desktop.
+- Honors reduced-motion preferences and uses a reduced WebGL pixel ratio.
 
-There are several ways of editing your application.
+## Stack
 
-**Use Lovable**
+- React 18, TypeScript and Vite
+- Three.js, React Three Fiber and Drei
+- Framer Motion
+- Lucide React
+- CSS 3D transforms, SVG diagrams and responsive layouts
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7b2a6e04-b93d-409a-b2b4-bc33c9fd2ab1) and start prompting.
+## Run locally
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Requires Node.js 18 or newer.
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Check a production bundle with:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```sh
+npm run build
+npm run preview
+```
 
-**Use GitHub Codespaces**
+## Project links
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Project exhibits link to public repositories. Some hosted demos or database services may be inactive; repository source and local setup remain the reference for the implementation.
 
-## What technologies are used for this project?
+## Motion and performance
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/7b2a6e04-b93d-409a-b2b4-bc33c9fd2ab1) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Motion is sequenced around scroll and section visibility rather than running a separate animation on every element. The 3D object uses a low-power renderer and capped device pixel ratio; the page reduces ambient motion for users who prefer reduced motion.

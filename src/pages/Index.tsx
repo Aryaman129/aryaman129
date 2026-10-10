@@ -1,7 +1,5 @@
-import AIPortfolio from "@/components/AIPortfolio";
+import SignalEngine from "@/components/SignalEngine";
 
-const Index = () => {
-  return <AIPortfolio />;
-};
+const Index = () => <SignalEngine />;
 
 export default Index;
