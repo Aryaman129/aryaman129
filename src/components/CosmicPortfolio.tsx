@@ -223,7 +223,7 @@ export default function CosmicPortfolio() {
         <button className="menu-toggle" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
           <span /><span />
         </button>
-        <nav className={\`nav-links \${menuOpen ? "nav-links-open" : ""}\`} aria-label="Main navigation">
+        <nav className={`nav-links ${menuOpen ? "nav-links-open" : ""}`} aria-label="Main navigation">
           <a className="nav-link" href="#about" onClick={closeMenu}>About</a>
           <a className="nav-link" href="#work" onClick={closeMenu}>Selected work</a>
           <a className="nav-link" href="#stack" onClick={closeMenu}>Toolkit</a>
