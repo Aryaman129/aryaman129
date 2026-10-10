@@ -126,7 +126,7 @@ function MetallicCore({ progressRef, reduceMotion }: { progressRef: MutableRefOb
 
   return (
     <group ref={group} position={[2.65, 0.04, -0.4]} scale={1.16}>
-      <Float speed={0.55} rotationIntensity={0.07} floatIntensity={0.12}>
+      <Float speed={reduceMotion ? 0 : 0.55} rotationIntensity={reduceMotion ? 0 : 0.07} floatIntensity={reduceMotion ? 0 : 0.12}>
         <mesh ref={core}>
           <icosahedronGeometry args={[1.62, 5]} />
           <meshPhysicalMaterial color="#9ba8b9" metalness={0.92} roughness={0.24} clearcoat={1} clearcoatRoughness={0.16} flatShading />
@@ -266,7 +266,7 @@ export default function CosmicPortfolio() {
           </div>
           <div className="hero-side-label"><span>INDEPENDENT THINKING</span><span className="side-label-line" /><span>ITERATION / 2026</span></div>
           <a className="scroll-cue" href="#about" aria-label="Scroll to about"><span className="scroll-cue-line" />Scroll to explore <ArrowDownRight size={13} /></a>
-          <div className="hero-coordinate" aria-hidden="true">LAT 13° 04' N <span>·</span> DIGITAL SPACE / 001</div>
+          <div className="hero-coordinate" aria-hidden="true">SIGNAL / 001 <span>·</span> EXPERIMENTS IN PROGRESS</div>
         </section>
 
         <div className="ticker" aria-hidden="true">
