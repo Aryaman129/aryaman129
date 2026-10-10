@@ -454,3 +454,16 @@ button { color: inherit; }
   .project-stage, .project-reveal:nth-child(even) .project-stage { grid-template-areas: none; }
   .project-stage .project-copy, .project-stage .project-visual-wrap { grid-area: auto; }
 }
+
+
+.section-heading-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; max-width: 360px; }
+.project-visual-note { display: inline-flex; align-items: center; gap: 7px; color: #78899e; font: 8px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .1em; }
+.project-visual-note svg { color: #9fb4d0; flex: 0 0 auto; }
+@media (max-width: 980px) {
+  .section-heading-meta { max-width: 480px; margin-top: 24px; }
+  .section-heading-row { align-items: flex-start; }
+}
+@media (max-width: 640px) {
+  .section-heading-meta { margin-top: 0; gap: 12px; }
+  .project-visual-note { font-size: 7px; }
+}
