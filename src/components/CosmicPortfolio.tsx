@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type MutableRefObject, type ReactNode } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, Stars, useThree } from "@react-three/drei";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Float, Stars } from "@react-three/drei";
 import * as THREE from "three";
 import { AnimatePresence, motion, useReducedMotion, useScroll } from "framer-motion";
 import {
