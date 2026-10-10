@@ -1,73 +1,49 @@
-# Welcome to your Lovable project
+# Aryaman Mohta — Portfolio
 
-## Project info
+A personal portfolio for my work across software engineering, applied AI, mobile machine learning and automation.
 
-**URL**: https://lovable.dev/projects/7b2a6e04-b93d-409a-b2b4-bc33c9fd2ab1
+**Live site:** https://aryaman129.vercel.app/  
+**GitHub:** https://github.com/Aryaman129
 
-## How can I edit this code?
+## Experience
 
-There are several ways of editing your application.
+- Metallic, dark cosmic visual system with tinted-white typography
+- React Three Fiber / Three.js 3D centerpiece with pointer-responsive movement and scroll-linked rotation
+- Motion-driven headline entrances, rolling role text, smooth section reveals and a continuously moving skill ticker
+- Source-linked project cards with hover depth
+- Interactive skill categories, responsive mobile navigation and contact links
+- Reduced-motion support and responsive layouts
 
-**Use Lovable**
+## Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7b2a6e04-b93d-409a-b2b4-bc33c9fd2ab1) and start prompting.
+- React 18 + TypeScript + Vite
+- React Three Fiber, Three.js and Drei
+- Framer Motion
+- Tailwind CSS
+- Lucide React icons
 
-Changes made via Lovable will be committed automatically to this repo.
+## Run locally
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Prerequisites: Node.js 18+ and npm.
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Create a production build with:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```sh
+npm run build
+npm run preview
+```
 
-**Use GitHub Codespaces**
+## Projects
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The portfolio links directly to public repositories. Some project deployments may be inactive because their free-tier databases are disconnected; project source and local setup remain the reference for implementation details.
 
-## What technologies are used for this project?
+## Accessibility and performance
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/7b2a6e04-b93d-409a-b2b4-bc33c9fd2ab1) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- Honors `prefers-reduced-motion` for non-essential motion.
+- Uses a restrained 3D scene and reduced device pixel ratio to keep the effect lightweight.
+- Provides a readable content layer above the 3D backdrop.
