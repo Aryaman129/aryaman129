@@ -467,3 +467,14 @@ button { color: inherit; }
   .section-heading-meta { margin-top: 0; gap: 12px; }
   .project-visual-note { font-size: 7px; }
 }
+
+
+.project-stage::before {
+  content: ""; position: absolute; z-index: -1; inset: 0; pointer-events: none; opacity: 0;
+  background: radial-gradient(ellipse at var(--mx,50%) var(--my,50%), rgba(168,196,232,.085), transparent 43%);
+  transition: opacity .3s ease;
+}
+.project-stage:hover::before { opacity: 1; }
+@media (hover: none) {
+  .project-stage::before { display: none; }
+}
