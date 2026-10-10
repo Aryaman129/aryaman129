@@ -388,7 +388,7 @@ function SignalExperience() {
         <section className="signal-work world-section" id="work" data-world-section="2">
           <div className="section-heading-row">
             <div><span className="eyebrow-index">02 / SELECTED WORK</span><h2 className="section-heading">Built to <span>move.</span></h2></div>
-            <p className="section-deck">A few experiments and products where the interface is only one layer of the system.</p>
+            <p className="section-deck">A few experiments and products where the interface is only one layer of the system.</p><span className="project-visual-note"><Sparkles size={12} /> VISUAL STUDIES / SOURCE-LINKED PROJECTS</span>
           </div>
           <div className="projects-stream">
             {projectData.map((project, index) => (
