@@ -137,17 +137,22 @@ function SignalGeometry({ stageRef, reduced }: { stageRef: MutableStage; reduced
       [0.7, -1.25, -1.0, 0.42]
     ];
     const pose = (mobile ? mobilePos : desktopPos)[stage];
+    if (reduced) {
+      if (root.current) {
+        root.current.position.set(mobile ? 0 : 2.65, mobile ? -0.8 : 0.05, -0.4);
+        root.current.scale.setScalar(mobile ? 0.48 : 0.82);
+      }
+      return;
+    }
     const cameraOffsets = [0, 0.45, -0.25, 0.65, 0.1, 0.35];
-    if (!reduced) camera.position.z = THREE.MathUtils.damp(camera.position.z, 9.7 + cameraOffsets[stage], 1.5, delta);
+    camera.position.z = THREE.MathUtils.damp(camera.position.z, 9.7 + cameraOffsets[stage], 1.5, delta);
     if (root.current) {
       const target = new THREE.Vector3(pose[0] + mouse.current.x * (mobile ? 0.015 : 0.16), pose[1] - mouse.current.y * (mobile ? 0.012 : 0.08), pose[2]);
       root.current.position.lerp(target, 1 - Math.exp(-delta * 2.6));
       const scale = THREE.MathUtils.damp(root.current.scale.x, pose[3], 2.4, delta);
       root.current.scale.setScalar(scale);
-      if (!reduced) {
-        root.current.rotation.y = THREE.MathUtils.damp(root.current.rotation.y, state.clock.elapsedTime * 0.08 + mouse.current.x * 0.12 + stage * 0.48, 1.8, delta);
-        root.current.rotation.x = THREE.MathUtils.damp(root.current.rotation.x, mouse.current.y * 0.08 + Math.sin(state.clock.elapsedTime * 0.19) * 0.045, 1.8, delta);
-      }
+      root.current.rotation.y = THREE.MathUtils.damp(root.current.rotation.y, state.clock.elapsedTime * 0.08 + mouse.current.x * 0.12 + stage * 0.48, 1.8, delta);
+      root.current.rotation.x = THREE.MathUtils.damp(root.current.rotation.x, mouse.current.y * 0.08 + Math.sin(state.clock.elapsedTime * 0.19) * 0.045, 1.8, delta);
     }
     if (shell.current && !reduced) {
       shell.current.rotation.x += delta * 0.035;
