@@ -398,7 +398,7 @@ function SignalExperience() {
           <div className="projects-stream">
             {projectData.map((project, index) => (
               <Reveal key={project.number} delay={index % 2 ? 0.1 : 0} className="project-reveal">
-                <motion.article className={'project-stage project-stage-' + project.kind} whileHover={reduceMotion ? undefined : { y: -5, rotateX: 0.6 }} transition={{ type: 'spring', stiffness: 150, damping: 20 }}>
+                <motion.article className={'project-stage project-stage-' + project.kind} whileHover={reduceMotion ? undefined : { y: -5, rotateX: 0.6 }} onMouseMove={(event) => { const rect = event.currentTarget.getBoundingClientRect(); event.currentTarget.style.setProperty('--mx', ((event.clientX - rect.left) / rect.width * 100) + '%'); event.currentTarget.style.setProperty('--my', ((event.clientY - rect.top) / rect.height * 100) + '%'); }} transition={{ type: 'spring', stiffness: 150, damping: 20 }}>
                   <div className="project-copy">
                     <div className="project-overline"><span>{project.number} / 04</span><span>{project.category}</span></div>
                     <h3>{project.name}</h3><p>{project.description}</p>
