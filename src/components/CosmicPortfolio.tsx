@@ -104,11 +104,10 @@ function MetallicCore({ progressRef }: { progressRef: MutableRefObject<number> }
     if (group.current) {
       const compact = size.width < 700;
       group.current.position.x = THREE.MathUtils.damp(group.current.position.x, compact ? 1.65 : 2.65, 2, delta);
-      group.current.position.y = THREE.MathUtils.damp(group.current.position.y, compact ? -1.0 : 0.04, 2, delta) + Math.sin(state.clock.elapsedTime * 0.4) * 0.035;
+      group.current.position.y = THREE.MathUtils.damp(group.current.position.y, (compact ? -1.0 : 0.04) + Math.sin(state.clock.elapsedTime * 0.4) * 0.12 - progress * 0.28, 2, delta);
       group.current.scale.setScalar(THREE.MathUtils.damp(group.current.scale.x, compact ? 0.72 : 1.16, 2, delta));
       group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, pointer.current.x * 0.16 + progress * 0.62, 2.1, delta);
       group.current.rotation.x = THREE.MathUtils.damp(group.current.rotation.x, -pointer.current.y * 0.09 + Math.sin(state.clock.elapsedTime * 0.22) * 0.025, 2.1, delta);
-      group.current.position.y += Math.sin(state.clock.elapsedTime * 0.4) * 0.045 - progress * 0.0005;
     }
     if (core.current) {
       core.current.rotation.x += delta * 0.08;
