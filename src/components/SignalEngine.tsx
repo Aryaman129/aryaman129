@@ -4,8 +4,8 @@ import { Float, Stars } from '@react-three/drei';
 import * as THREE from 'three';
 import { AnimatePresence, motion, useReducedMotion, useScroll } from 'framer-motion';
 import {
-  ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, BrainCircuit, Check,
-  Code2, Command, Github, Layers3, Mail, Orbit, Radio, Sparkles, Workflow
+  ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, Check,
+  Command, Github, Layers3, Mail, Orbit, Radio, Sparkles
 } from 'lucide-react';
 
 type Stage = 0 | 1 | 2 | 3 | 4 | 5;
@@ -15,7 +15,7 @@ const scrambleChars = 'ABCDEFGHJKLMNPQRSTUVWXYZ0123456789<>/*+=-';
 
 function TextDecode({ text, className = '', delay = 0 }: { text: string; className?: string; delay?: number }) {
   const [started, setStarted] = useState(false);
-  const [value, setValue] = useState(text);
+  const [value, setValue] = useState(() => text.split('').map((char) => char === ' ' || char === '\n' ? char : '·').join(''));
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
