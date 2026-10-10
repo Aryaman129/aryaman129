@@ -1,7 +1,5 @@
-import AIPortfolio from "@/components/AIPortfolio";
+import CosmicPortfolio from "@/components/CosmicPortfolio";
 
-const Index = () => {
-  return <AIPortfolio />;
-};
+const Index = () => <CosmicPortfolio />;
 
 export default Index;
