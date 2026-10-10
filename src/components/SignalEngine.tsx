@@ -147,8 +147,8 @@ function SignalGeometry({ stageRef, reduced }: { stageRef: MutableStage; reduced
     const cameraOffsets = [0, 0.45, -0.25, 0.65, 0.1, 0.35];
     camera.position.z = THREE.MathUtils.damp(camera.position.z, 9.7 + cameraOffsets[stage], 1.5, delta);
     if (root.current) {
-      const target = new THREE.Vector3(pose[0] + mouse.current.x * (mobile ? 0.015 : 0.16), pose[1] - mouse.current.y * (mobile ? 0.012 : 0.08), pose[2]);
-      root.current.position.lerp(target, 1 - Math.exp(-delta * 2.6));
+      targetPosition.current.set(pose[0] + mouse.current.x * (mobile ? 0.015 : 0.16), pose[1] - mouse.current.y * (mobile ? 0.012 : 0.08), pose[2]);
+      root.current.position.lerp(targetPosition.current, 1 - Math.exp(-delta * 2.6));
       const scale = THREE.MathUtils.damp(root.current.scale.x, pose[3], 2.4, delta);
       root.current.scale.setScalar(scale);
       root.current.rotation.y = THREE.MathUtils.damp(root.current.rotation.y, state.clock.elapsedTime * 0.08 + mouse.current.x * 0.12 + stage * 0.48, 1.8, delta);
