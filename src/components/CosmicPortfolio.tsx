@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MutableRefObject, type ReactNode } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, Stars, Torus, Icosahedron } from "@react-three/drei";
+import { Float, Stars, useThree } from "@react-three/drei";
 import * as THREE from "three";
 import { AnimatePresence, motion, useReducedMotion, useScroll } from "framer-motion";
 import {
   ArrowDownRight, ArrowRight, ArrowUpRight, BrainCircuit, Code2, Github,
-  Layers3, Mail, Orbit, Smartphone, Terminal, Workflow
+  Layers3, Mail, Orbit, Workflow
 } from "lucide-react";
 
 type Project = {
@@ -82,12 +82,13 @@ const skillGroups = [
   { name: "AI & Automation", icon: BrainCircuit, title: "Applied intelligence", copy: "Building experiments that connect models to real software, sensors and interfaces.", items: ["PyTorch", "Hugging Face", "TensorFlow Lite", "OpenCV", "EasyOCR", "Ollama", "LangChain", "Selenium", "Playwright"] }
 ];
 
-function MetallicCore({ progressRef }: { progressRef: React.MutableRefObject<number> }) {
+function MetallicCore({ progressRef }: { progressRef: MutableRefObject<number> }) {
   const group = useRef<THREE.Group>(null);
   const core = useRef<THREE.Mesh>(null);
   const ringA = useRef<THREE.Mesh>(null);
   const ringB = useRef<THREE.Mesh>(null);
   const pointer = useRef({ x: 0, y: 0 });
+  const { size } = useThree();
 
   useEffect(() => {
     const onPointerMove = (event: PointerEvent) => {
@@ -101,9 +102,13 @@ function MetallicCore({ progressRef }: { progressRef: React.MutableRefObject<num
   useFrame((state, delta) => {
     const progress = progressRef.current;
     if (group.current) {
+      const compact = size.width < 700;
+      group.current.position.x = THREE.MathUtils.damp(group.current.position.x, compact ? 1.65 : 2.65, 2, delta);
+      group.current.position.y = THREE.MathUtils.damp(group.current.position.y, compact ? -1.0 : 0.04, 2, delta) + Math.sin(state.clock.elapsedTime * 0.4) * 0.035;
+      group.current.scale.setScalar(THREE.MathUtils.damp(group.current.scale.x, compact ? 0.72 : 1.16, 2, delta));
       group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, pointer.current.x * 0.16 + progress * 0.62, 2.1, delta);
       group.current.rotation.x = THREE.MathUtils.damp(group.current.rotation.x, -pointer.current.y * 0.09 + Math.sin(state.clock.elapsedTime * 0.22) * 0.025, 2.1, delta);
-      group.current.position.y = Math.sin(state.clock.elapsedTime * 0.4) * 0.12 - progress * 0.28;
+      group.current.position.y += Math.sin(state.clock.elapsedTime * 0.4) * 0.045 - progress * 0.0005;
     }
     if (core.current) {
       core.current.rotation.x += delta * 0.08;
@@ -145,7 +150,7 @@ function MetallicCore({ progressRef }: { progressRef: React.MutableRefObject<num
   );
 }
 
-function CosmicScene({ progressRef }: { progressRef: React.MutableRefObject<number> }) {
+function CosmicScene({ progressRef }: { progressRef: MutableRefObject<number> }) {
   return (
     <div className="cosmic-stage" aria-hidden="true">
       <Canvas
@@ -167,7 +172,7 @@ function CosmicScene({ progressRef }: { progressRef: React.MutableRefObject<numb
   );
 }
 
-function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
+function Reveal({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
   const reduceMotion = useReducedMotion();
   return (
     <motion.div
