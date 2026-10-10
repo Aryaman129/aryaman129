@@ -304,7 +304,7 @@ export default function CosmicPortfolio() {
               <div className="project-footer"><span className="project-type">PROJECT / {project.number}</span><a className="project-link" href={project.href} target="_blank" rel="noreferrer">Inspect source <ArrowUpRight size={14} /></a></div>
             </motion.article></Reveal>)}
           </div>
-          <Reveal delay={0.1} className="additional-work"><span className="additional-label">Also in the workshop</span><a href="https://github.com/Aryaman129/Blog-management" target="_blank" rel="noreferrer">Mosaic Paths / Blog CMS <ArrowUpRight size={13} /></a><a href="https://github.com/Aryaman129/Conference-Management-System" target="_blank" rel="noreferrer">Conference workflows <ArrowUpRight size={13} /></a><a href="https://github.com/Aryaman129/Captcha_Solver_Bot" target="_blank" rel="noreferrer">Android + OCR automation <ArrowUpRight size={13} /></a></Reveal>
+          <Reveal delay={0.1} className="additional-work"><span className="additional-label">Also in the workshop</span><a href="https://github.com/Aryaman129/Blog-management" target="_blank" rel="noreferrer">Mosaic Paths / Blog CMS <ArrowUpRight size={13} /></a><a href="https://github.com/Aryaman129/Stocks" target="_blank" rel="noreferrer">StockSphere / portfolio analytics <ArrowUpRight size={13} /></a><a href="https://github.com/Aryaman129/Captcha_Solver_Bot" target="_blank" rel="noreferrer">Android + OCR automation <ArrowUpRight size={13} /></a></Reveal>
         </section>
 
         <section className="section-wrap skills-section" id="stack">
