@@ -82,7 +82,7 @@ const skillGroups = [
   { name: "AI & Automation", icon: BrainCircuit, title: "Applied intelligence", copy: "Building experiments that connect models to real software, sensors and interfaces.", items: ["PyTorch", "Hugging Face", "TensorFlow Lite", "OpenCV", "EasyOCR", "Ollama", "LangChain", "Selenium", "Playwright"] }
 ];
 
-function MetallicCore({ progressRef }: { progressRef: MutableRefObject<number> }) {
+function MetallicCore({ progressRef, reduceMotion }: { progressRef: MutableRefObject<number>; reduceMotion: boolean }) {
   const group = useRef<THREE.Group>(null);
   const core = useRef<THREE.Mesh>(null);
   const ringA = useRef<THREE.Mesh>(null);
@@ -101,8 +101,15 @@ function MetallicCore({ progressRef }: { progressRef: MutableRefObject<number> }
 
   useFrame((state, delta) => {
     const progress = progressRef.current;
+    const compact = size.width < 700;
+    if (reduceMotion) {
+      if (group.current) {
+        group.current.position.set(compact ? 1.65 : 2.65, compact ? -1.0 : 0.04, -0.4);
+        group.current.scale.setScalar(compact ? 0.72 : 1.16);
+      }
+      return;
+    }
     if (group.current) {
-      const compact = size.width < 700;
       group.current.position.x = THREE.MathUtils.damp(group.current.position.x, compact ? 1.65 : 2.65, 2, delta);
       group.current.position.y = THREE.MathUtils.damp(group.current.position.y, (compact ? -1.0 : 0.04) + Math.sin(state.clock.elapsedTime * 0.4) * 0.12 - progress * 0.28, 2, delta);
       group.current.scale.setScalar(THREE.MathUtils.damp(group.current.scale.x, compact ? 0.72 : 1.16, 2, delta));
@@ -149,7 +156,7 @@ function MetallicCore({ progressRef }: { progressRef: MutableRefObject<number> }
   );
 }
 
-function CosmicScene({ progressRef }: { progressRef: MutableRefObject<number> }) {
+function CosmicScene({ progressRef, reduceMotion }: { progressRef: MutableRefObject<number>; reduceMotion: boolean }) {
   return (
     <div className="cosmic-stage" aria-hidden="true">
       <Canvas
@@ -163,8 +170,8 @@ function CosmicScene({ progressRef }: { progressRef: MutableRefObject<number> })
         <directionalLight position={[-4, 5, 5]} intensity={2.1} color="#eef3fb" />
         <pointLight position={[4, 1, 4]} intensity={45} distance={13} color="#a9bdd8" />
         <pointLight position={[-5, -2, 1]} intensity={22} distance={12} color="#667b9b" />
-        <Stars radius={48} depth={35} count={950} factor={1.7} saturation={0} fade speed={0.18} />
-        <MetallicCore progressRef={progressRef} />
+        <Stars radius={48} depth={35} count={reduceMotion ? 320 : 950} factor={1.7} saturation={0} fade speed={reduceMotion ? 0 : 0.18} />
+        <MetallicCore progressRef={progressRef} reduceMotion={reduceMotion} />
       </Canvas>
       <div className="cosmic-vignette" />
     </div>
@@ -213,7 +220,7 @@ export default function CosmicPortfolio() {
 
   return (
     <div className="cosmic-site">
-      <CosmicScene progressRef={progressRef} />
+      <CosmicScene progressRef={progressRef} reduceMotion={Boolean(reduceMotion)} />
       <motion.div className="scroll-progress" style={{ scaleX: scrollYProgress }} />
       <header className="site-nav">
         <a className="brand-mark" href="#top" aria-label="Aryaman Mohta, back to top" onClick={closeMenu}>
