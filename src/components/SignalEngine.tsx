@@ -348,7 +348,7 @@ function SignalExperience() {
       <header className="signal-header">
         <a href="#top" className="signal-logo" aria-label="Aryaman Mohta home"><span className="logo-glyph">A<span>.</span></span><span className="logo-name">ARYAMAN<br />MOHTA</span></a>
         <span className="header-mode"><i /> INDEPENDENT / SYSTEMS STUDIO</span>
-        <nav className="signal-nav"><a href="#about">About</a><a href="#work">Work <span>04</span></a><a href="#method">Method</a><a href="#contact" className="nav-contact">Connect <ArrowUpRight size={13} /></a></nav>
+        <nav className="signal-nav"><a href="#about">About</a><a href="#work">Work <span>04</span></a><a href="#method">Method</a><a href="#toolkit">Toolkit</a><a href="#contact" className="nav-contact">Connect <ArrowUpRight size={13} /></a></nav>
       </header>
 
       <main className="signal-main">
@@ -450,7 +450,7 @@ function SignalExperience() {
             <span className="eyebrow-index">05 / OPEN CHANNEL</span>
             <h2>Have a problem<br />worth <span>solving?</span></h2>
             <TextDecode text="Let’s turn a good question into something real." className="contact-decode" />
-            <div className="contact-links"><a href="mailto:aryamanmohta@gmail.com" className="solid-link"><Mail size={15} /> Start a conversation <ArrowUpRight size={14} /></a><a href="https://github.com/Aryaman129" className="text-link" target="_blank" rel="noreferrer"><Github size={15} /> Explore the code <ArrowRight size={14} /></a></div>
+            <div className="contact-links"><a href="mailto:aryamanmohta@gmail.com" className="solid-link"><Mail size={15} /> Start a conversation <ArrowUpRight size={14} /></a><a href="https://github.com/Aryaman129" className="text-link" target="_blank" rel="noreferrer"><Github size={15} /> Explore the code <ArrowRight size={14} /></a><a href="https://www.linkedin.com/in/aryaman-mohta-53b715308" className="text-link" target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={14} /></a></div>
           </div>
           <div className="contact-bottom"><span>ARYAMAN MOHTA / SOFTWARE + APPLIED AI</span><span>THANK YOU FOR EXPLORING <Sparkles size={12} /></span><a href="#top">BACK TO SIGNAL ↑</a></div>
         </section>
