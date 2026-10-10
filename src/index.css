@@ -443,3 +443,14 @@ button { color: inherit; }
   .project-reveal:nth-child(even) .project-stage .project-copy,
   .project-reveal:nth-child(even) .project-stage .project-visual-wrap { order: initial; }
 }
+
+
+/* Grid placement makes alternating project compositions work in CSS Grid. */
+.project-stage { grid-template-areas: "copy visual"; }
+.project-stage .project-copy { grid-area: copy; }
+.project-stage .project-visual-wrap { grid-area: visual; }
+.project-reveal:nth-child(even) .project-stage { grid-template-areas: "visual copy"; }
+@media (max-width: 640px) {
+  .project-stage, .project-reveal:nth-child(even) .project-stage { grid-template-areas: none; }
+  .project-stage .project-copy, .project-stage .project-visual-wrap { grid-area: auto; }
+}
