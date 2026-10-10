@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type MutableRefObject, type ReactNode } from 'react';
+import { useCallback, useEffect, useRef, useState, type MutableRefObject, type ReactNode } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Float, Stars } from '@react-three/drei';
 import * as THREE from 'three';
@@ -307,8 +307,7 @@ function SignalExperience() {
   const [stage, setStage] = useState<Stage>(0);
   const [skill, setSkill] = useState<keyof typeof skillSets>('Interface');
   const stageRef = useRef(0);
-  const loadedRef = useRef(false);
-
+  
   useEffect(() => {
     if (reduceMotion) { setBooted(true); return; }
     try {
@@ -317,10 +316,10 @@ function SignalExperience() {
     return;
   }, [reduceMotion]);
 
-  const finishBoot = () => {
+  const finishBoot = useCallback(() => {
     setBooted(true);
     try { sessionStorage.setItem('signal-engine-booted', '1'); } catch { /* Optional. */ }
-  };
+  }, []);
 
   useEffect(() => {
     const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-world-section]'));
@@ -459,13 +458,5 @@ function SignalExperience() {
 }
 
 export default function SignalEngine() {
-  const [bootVisible, setBootVisible] = useState(true);
-  const reduced = useReducedMotion();
-  const finishBoot = () => setBootVisible(false);
-
-  return (
-    <div className="signal-root">
-      <SignalExperience />
-    </div>
-  );
+  return <div className="signal-root"><SignalExperience /></div>;
 }
