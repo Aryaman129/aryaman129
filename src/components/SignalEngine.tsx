@@ -105,7 +105,7 @@ function SignalGeometry({ stageRef, reduced }: { stageRef: MutableStage; reduced
   const ringB = useRef<THREE.Mesh>(null);
   const ringC = useRef<THREE.Mesh>(null);
   const mouse = useRef({ x: 0, y: 0 });
-  const { size } = useThree();
+  const { size, camera } = useThree();
 
   useEffect(() => {
     const move = (event: PointerEvent) => {
@@ -121,22 +121,24 @@ function SignalGeometry({ stageRef, reduced }: { stageRef: MutableStage; reduced
     const stage = Math.min(5, Math.max(0, Math.round(stageRef.current)));
     const mobile = size.width < 720;
     const desktopPos: [number, number, number, number][] = [
-      [2.55, 0.15, -0.4, 1.05],
-      [-2.65, 0.0, -0.8, 0.82],
-      [2.75, -0.35, -0.6, 0.95],
-      [-2.55, 0.2, -0.55, 0.82],
-      [2.55, 0.15, -0.7, 0.88],
-      [0.0, 0.18, -0.55, 0.82]
+      [2.65, 0.08, -0.4, 1.05],
+      [3.05, -0.55, -0.9, 0.67],
+      [-3.45, -0.35, -1.2, 0.58],
+      [3.05, 0.35, -0.9, 0.72],
+      [-3.2, -0.1, -1.1, 0.65],
+      [3.1, 0.3, -0.8, 0.7]
     ];
     const mobilePos: [number, number, number, number][] = [
       [0.0, -0.8, -0.2, 0.64],
-      [1.35, -0.5, -0.75, 0.56],
-      [0.0, -0.5, -0.5, 0.7],
-      [-1.25, -0.4, -0.45, 0.58],
-      [0.0, -0.7, -0.6, 0.62],
-      [0.0, 0.0, -0.5, 0.58]
+      [0.85, -1.25, -1.1, 0.4],
+      [0.15, -1.75, -1.7, 0.34],
+      [1.35, -0.8, -1.2, 0.42],
+      [-1.25, -1.3, -1.4, 0.38],
+      [0.7, -1.25, -1.0, 0.42]
     ];
     const pose = (mobile ? mobilePos : desktopPos)[stage];
+    const cameraOffsets = [0, 0.45, -0.25, 0.65, 0.1, 0.35];
+    if (!reduced) camera.position.z = THREE.MathUtils.damp(camera.position.z, 9.7 + cameraOffsets[stage], 1.5, delta);
     if (root.current) {
       const target = new THREE.Vector3(pose[0] + mouse.current.x * (mobile ? 0.015 : 0.16), pose[1] - mouse.current.y * (mobile ? 0.012 : 0.08), pose[2]);
       root.current.position.lerp(target, 1 - Math.exp(-delta * 2.6));
@@ -152,16 +154,16 @@ function SignalGeometry({ stageRef, reduced }: { stageRef: MutableStage; reduced
       shell.current.rotation.z -= delta * 0.024;
     }
     if (core.current) {
-      const opacity = [0.96, 0.44, 0.83, 0.35, 0.48, 0.72][stage];
+      const opacity = [0.96, 0.28, 0.15, 0.28, 0.22, 0.45][stage];
       core.current.opacity = THREE.MathUtils.damp(core.current.opacity, opacity, 2.5, delta);
       core.current.roughness = THREE.MathUtils.damp(core.current.roughness, stage === 2 ? 0.15 : 0.28, 2, delta);
     }
     if (wire.current) {
-      const opacity = [0.17, 0.62, 0.28, 0.88, 0.76, 0.22][stage];
+      const opacity = [0.17, 0.62, 0.78, 0.88, 0.82, 0.28][stage];
       wire.current.opacity = THREE.MathUtils.damp(wire.current.opacity, opacity, 2.5, delta);
     }
     if (knotMat.current) {
-      const opacity = [0.62, 0.21, 0.82, 0.2, 0.44, 0.74][stage];
+      const opacity = [0.62, 0.45, 0.12, 0.2, 0.22, 0.35][stage];
       knotMat.current.opacity = THREE.MathUtils.damp(knotMat.current.opacity, opacity, 2.5, delta);
     }
     if (!reduced) {
